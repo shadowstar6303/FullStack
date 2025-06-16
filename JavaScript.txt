@@ -1,0 +1,1444 @@
+JAVAScript  
+frontEnd Web Apps
+Backen
+Destop Apps
+Mobile Apps
+interactive web  pages
+Library Frame work
+NPM package Manager
+----------------------------------
+CaseSensitive   Node JS 
+npm install 
+
+inside  <body></body>
+<script src="index.js"></ script>
+
+/or <script>
+              </script>
+
+
+console.log(`Hello`);
+console.log(""+username)  //"" is for only single line multiline ``template literal/String
+view in inpect element in console
+
+window.alert(`This is an alert!`);
+window.alert(`i like pizza`);
+// Single line comment
+/**/  Multiline comment
+
+<h1 id="hell" >WCypher</h1>
+document.getElementById("hell").textContent="Hello";
+                               to change text content
+
+//variables-a container that stores a value. behaves as it has a value
+ 
+let x;  //declaration  (var unique)
+x=100;  //assignment   
+console.log(x);
+let x=123;
+
+//datatypes
+let age =25; 10.99 2.1
+let name="WCypher";   ${}-placeholder
+
+consol.log("You are $${age} yeat"); $25
+
+consol.log(typeof age); //which type of data
+//boolean true false
+let isStudent=false;
+
+let age=23;
+<p id="p1"><p>  in html
+document.getElementById("p1").textContent="age"/" you name ${}";
+
+arithmetic operations=operands (values,variables,etc) /operators (* + - / ** %)
+stu=stu**2;
+
+Augmented assignment operators
+s+=1;
+s-=1;
+s*=2; s**=2; s%=2;
+s++;incre operator s--
+//Operator precedence   () left side ** right side 
+1.()  2.**  3.* / %   4.+ -
+
+let result=1+2*3+4**2;
+consol.log(result);
+
+How to Accept User i/p
+1.easy way=window prompt
+2.profession way =HTML textbox
+
+let username;
+username=window.prompt("what's your username?");
+console.log(username);
+
+2.  
+<label>username:</label>
+<input id="mytext"><br><br>
+<button id="mysubmit" >submit</button>
+
+let username;
+document.getElementById("mysubmit").onclick=funtion(){
+    username=document.getElementById("mytext").value;
+    console.log(username);
+}  -----button click store textbox input
+
+<h1 id="h1"> Welcome<h1> 
+let username;
+document.getElementById("mysubmit").onclick=funtion(){
+    username=document.getElementById("mytext").value;
+    document.getElementById("myh1").textContent="Hello ${username}"
+} ----change h1 element by textContent  
+
+//type conversion= change datatype to another
+string,number,boolean
+
+let age=window.prompt("How old are u"); 25
+age=Number(age);     //if Number() not use string concatenation 251
+age+=1;
+console.log(age,typeof age);
+ 
+let x="pizza"/"0"/""
+ x=Number(x);
+ console.log(x,typeof x)
+ x=String(x);
+ console.log(x,typeof x)
+ x=Boolean(x);
+ console.log(x,typeof x)
+
+//const = a var that can't be chaged
+
+const pi=3.14159;
+let radius;
+let cir;
+radius=window.prompt(" Enter rad of cir");
+r=Number(r)
+cir=2*pi*radius;
+console.log(cir);
+
+//take no as i/p and give o/p cir on html
+<h1 id="myh1" > enter r of cir
+<label> radius: <label>
+<input type="text" id="mytext"><br><br>
+<button id="mysubmit"> submit <button>
+<h2 id="myh2" ></h2>
+
+js
+const PI=3.1415
+let radius;
+let cir;
+document.getElementById("mysubmit").onclick=funtion(){
+    radius=document.getElementById("mytext").value;
+    radius=Number(radius);
+    cir=2*PI*radius;
+    document.getElementById("myh2").textContent=cir+"cm";
+    
+}
+
+ //counter Program
+      const decreaseBtn = document.getElementById("decreaseBtn");
+      const resetBtn = document.getElementById("resetBtn");
+      const increaseBtn = document.getElementById("increaseBtn");
+      const countLabel = document.getElementById("countLabel");
+      let count = 0;
+
+      increaseBtn.onclick = function () {
+        count++;
+        countLabel.textContent = count;
+      };
+      decreaseBtn.onclick = function () {
+        count--;
+        countLabel.textContent = count;
+      };
+      resetBtn.onclick = function () {
+        count = 0;
+        countLabel.textContent = count;
+      };
+--------------------------------------------------------------------
+//Math = built-in object that provides a 
+// 		collection of properties and methods
+console.log(Math.PI);
+console.log(Math.E);
+let x=3.99;
+    z=Math.round(x)
+	  .floor(x)  .ceil .trunc .pow(x,y) .sqrt() .log() .sin()
+      abs() sign() max(x,y,z) 
+---------------------------------------------------
+//Random no. generator
+                                     0-6        //100 replace with 6    
+let randomNum=Math.floor(Math.random()*6)+1;   // no  1-6
+
+console.log(randomNum)
+
+const min=50;
+const max=100;
+
+let randomNum=Math.floor(Math.random()*(max-min))+min; 
+
+----------------------------------------------------
+<button id="mybutton"><button>
+<label id="label"><label>
+ //Random no Generator
+
+const mybutton=document.getElementById("myButton");
+const label=document.getElementById("label")
+
+const min=1;
+const max=6;
+let randomNum;
+
+myButton.onclick=funtion(){
+	randomNum=Math.floor(Math.random()*max)+min;
+	label.textContent=randomNum;
+}
+--------------------------------------
+let age=25;            //let vs const  cannot be reassign 
+
+if(age>=18){
+	console.log(" you are old");
+}
+else if(age<0){}
+else{
+	console.log
+}
+let isstudent=false;
+if(isstudent){}
+         Nested if      age hasLicense=false
+--- take i/p give o/p by js----
+
+label
+input             
+submit p
+const mysubmit=document.getElementById("mysubmit");
+const input=document.getElementById("mytext");
+const result=document.getElementById("result");
+let age;
+
+mysubmit.onclick=function(){
+	age=input.value; str return type
+	age=Number(age); 
+	if(age>=18){
+        result.textContent="Eligible"
+}
+}
+----------------------------
+//checked = property that detemines the checked state
+of an htmL CHECKBOX OR RADIO Button element 
+
+  <input type"checkbox" id="mycheckbox" name="card">
+  <label  for="myCheckBox">subscribe</label><br><br>
+  
+  <input type"radio" id="visa" name="card">
+  <label  for="visaBtn">Visa</label><br>
+
+  <input type"radio" id="masterCardBtn" name="card">
+  <label  for="masterCardBtn">masterCard</label><br>
+  
+   <input type"radio" id="paypalBtn" name="card">
+  <label  for="paypalBtn">paypal</label><br><br>
+
+  <button type="submit" id="mySubmit">submit</button>
+   <p  id="subResult" ></p>
+   <p  id="paymentResult" ></p>
+
+js
+ const myCheckbox=d.g("myCheckBox");
+ const visoBtn =d.g("visaBTn");
+ const masterCardBtn=d.g("masterCardBtn");
+ const paypalBtn=d.g("paypalBtn");
+ const mysubmit=d.g("subResult");
+ const paymentResult=d.g("paymentResult");
+
+mysubmit.onclick=function(){
+	
+	if(mCheckBox.checked){
+	   subResult.textContent="u are subscribed"	     1.subscribed 2.paywith one type
+	}
+	else
+	if(visaBtn.checked)  {
+	paymentResult.textContent="you ar paying woth visa"}
+        else if(masterCardBtn.checked)  {
+	paymentResult.textContent=" u are pay with mastercard"
+ 	}
+}
+--------------------------
+//Tenary operator : a shortcut to if and else
+ condition ? codeIfTrue : codeIfFalse;
+let age=23;
+ msg=age >=18 ? "You are an Adult" :"You are a Minor";
+console.log(msg);
+=============================
+Replacement of switch let x if x==1  else if x==2
+ EFFICIENT REPLACEMENT OF IF ELSE
+let day=2;
+    switch(day){
+                 case 1:console.log("It is Mon");
+                 break;
+		 default: console.log("${day} is not day");
+		} 
+
+let testscore=93;
+let lettergrade;
+  switch(true){
+	       case testscore>90:
+		 lettergrade="A";
+               break;
+}
+console.log(lettergrade)
+--------------------------------------------
+//string methods=allow u to manipulate and work with text (strings)
+let username="WCypher";
+
+    username.match(/a/)
+console.log(username.charAt(0));
+                    .indexof("C"); 
+                    .lastIndexOf("e");
+                    .length; 
+username=username.trim(); --white spaces eliminate
+                 .toUpperCase()  
+		 .toLowerCase()  
+		 .repeat(3) --repeat 3 times
+                 .startWith(" ")  T/f  .endsWith("") .includes(" ")
+                 .split("-")
+wcypher->Wcypher  first letter captital
+  username.charAt(0).toUpperCase()+username.slice(1)
+
+let phno="123-456-7980"
+phno=phno.replaceAll("-","/");
+         .padStart(15,"0")  add 0 unit it has 15 char 000123-456
+
+//string slicing
+   string.slice(start,end)
+         .slice(1) --starts extracting from index 1 (the second element).
+constt fullName="WCypher"
+                                   
+let firstName=fullName.slice(0,2)   
+
+const email="Bro@gmail.com";
+ 
+let username=email.slice(0,email.indexOf("@"));
+
+Method chaining=calling one mehtod after another in a one
+continuous line of code
+
+username=username.trim().charAtt(0).toUpperCase() +username.trim().slice(1).toLowerCase()
+
+Logical operators =used to combine or AND && OR || NOT !
+
+= assign operator
+== comparision operator
+=== strict equality (operator value and datatype)
+!= inequality operator
+!== strict inquality operator
+
+while loop = repeat some code while some condition is True
+ do{  
+}while()
+
+//for loop= repeat some code a Limited amount of times
+for(let i=0;i<=2;i++){
+	console.log(i);
+}
+continue
+break
+
+if (isNAN(guess))
+-------------------------------------------------------
+funtion = reusable code  declae funblock call
+
+funtion y(username,age){
+     console.log("happy birthday to you");
+}
+
+y("WCypher",23);
+
+function add(x,y){
+    return x+y;/ let x=,y= return z
+}
+
+console.log(add(x,y))
+
+funtion isEven(number){
+	if (n%2===0)? true:false;
+ }
+console.log(isEven(12));
+//var scope local global  
+ inside fun local variable
+---------------
+//array= a var that hold more than one value
+let fruits=["apple","orange"] index 0 1 2
+
+console.log(fruits[0])
+fruits.push("coconut"); pop
+      .unshift("mango"); add at element begin
+      .shift();remove element from begin
+fruits.length;  //len of array
+      .indexOf("apple")  //index of array
+      .join("-")    //join array together<------
+let fruits=[]
+fruits.sort().reverse();
+for(let i=0;i<fruits.length;i++){
+	console.log(fruits[i]);
+}  
+09:19 PM 25-05-2025
+---------------
+//spread operator-  ... allow an iterable such as an array or 
+string to be expanded into seperate elements(unpacks the elements)
+-> expands an array into seperate elements.
+
+let numbers=[1,2,3,4]
+            console.log(...numbers);
+let maxiumum=Math.max(...numbers); in array max ... used
+
+let username="WCypher";
+let letter=[...username]; convert to char list 
+            ...username.join("-") w-c-
+joining to array
+ let f1=[]
+     f2=[]
+ let food=[...f1,...f2,"",""];
+consol.log(food);
+--------------------------------------------------------
+rest parameters=(...rest) allow a function work with a variable
+no. of arguments by budling them into an array
+->rest = bundles seperate elements into an array
+
+funtion openFridge(...foods){
+        console.log(foods);  ...food
+}
+const food1="pizza";
+const food1="hotdog";
+openFridge(food1,food2,food3) //add n no of parameters
+
+funtion getAverage(...numbers){
+	let result=0
+        for(let number of numbers){  //for loop in py in->of
+		result+=number;
+        }
+	return result/number.length;
+}
+const total=getAverage(2,3,4,5,2);
+      console.log(total);
+//combine strings
+
+function combineStrings(...strings){
+	return strings.join(" ");
+}
+
+const fullName=combineStrings("MR","Sponge","squarepants")
+console.log(fullname);
+---------------
+//callback= a funtion that is passed as an argument to another function.
+ 1.Reading a file    ----js 2 called fun 1 execute 2 execute 
+ 2.Network requests   ----but 1st take more time then 2 get execute first 2,1
+ 3.interacting DB     ---- in order to maintain order callback used
+hello(goodbye);
+
+function hello(callback){
+	console.log("Hello!");
+        callback();
+}
+
+function goodbye(){
+	console.log("Goodbye")
+}
+for 3 attributes
+
+sum(displayConsole,1,2);
+
+function sum(callback,x,y){
+	let result=x+y;
+	callback(result);
+}
+
+funtion displayConsole(result){
+	console.log(result);
+}
+DOM left page
+-----------------------------------------
+forEach() =method used to iteratte over the
+element of an array and apply a specificed funtion callback to each element
+           array.forEach(callback)
+	    element,index,array are provided
+
+let numbers=[1,2,3];
+
+numbers.forEach(display);
+
+function display(element){
+	console.log(element);
+}
+---------
+numbers.forEach(double);    //internal modify array
+numbers.forEach(display);
+
+function double(element,index,array){
+         array[index] =element*2;
+}
+
+function display(element){
+	console.log(element);
+}  //element.toUppercase()   element.charAt(0).toUpperCase+element.slice(1)
+
+-----------------
+.map() =accepts a callback and applies that funtion
+	to each element of an array ,the return a new array
+                                   -still have old array
+const numbers=[1,2,3,4,5];
+const squares=numbers.map(square);    
+
+console.log(squares);                  strings in array
+
+function square(element){             ele.toUpperCase();
+	return Math.pow(element,2)
+
+}
+--------> date to another format  
+const dates =["2024-1-10","2025-2-20"]
+const formattedDates=numbers.map(formatDates);
+
+c.l(formattedDates)
+function formatDates(element){
+	const parts=element.split("-");  1/10/2025
+	return `${parts[1]/${parts[2]/${parts[0]}`
+} 
+-------------------
+//.filter() = creates a new array by filtering out elements containing only elements that pass a specified test. It does not modify the original array.
+
+let numbers=[1,2,3,4,5];           
+let evenNums=numbers.filter(isEven);
+
+c.l();
+function isEven(element){
+	return element%2===0;  /!==
+}
+return element.length<=6;   //return words less =6
+-------------------
+//reduce =reduce the elements of array to a single value
+
+const prices=[5, 30, 10, 25, 15, 20];
+const total=prices.reduce(sum);
+
+  console.log($${total.toFixed(2)});  //2 decimal name
+
+function sum(accumulator, element){  //prev +next
+return accumulator + element;
+}
++
+functin getMax(accumulator, element){
+	return Math.max(accumulater,element);
+} 
+-------------
+//funtion declaration-defines a reusable block of code that perform a specific task
+function hello(){
+	console.log("Hello");
+}
+//function expressions=a way to define function values or variables
+setTimer(hello,3000); //sec
+setInterval(hello,1000);
+
+setTimer(function(){ 
+	c.l("hello")         //entire func as arg/fun expression
+},3000);
+----------------------------------
+//arrow function = a concise way to write funtion expression for simple functions that you use only once
+	(parameters)=>some code
+
+const hello=()=>console.log(`hell`)
+hello()
+const hello=(name,age)=>{onsole.log(`hell`)
+                        console.log(`${name})
+}
+hello(WCypher,25);
+
+setTimeout(() =>console.log("hell"),3000);
+
+const no =[1,2,3,4];
+const squares=numbers.map((element) => Math.pow(element,2));
+filter reduce
+--------------------------------------------------
+object=A collection of related properties and/or methods
+       can represent real world objects (people,products,p;ac)
+       object= { key:value,
+		 function()}
+
+const person={                                         #object
+	firstName:"WCypher",                           #properties
+	age:"23",
+	isEmployed:false,	
+        sayHello:function(){console.log("hi")},        #methods
+	eat:()=>console.log("he is eating"),
+}
+
+console.log(person.firstName);
+person.sayHello();
+person.eat();
+
+for (var prop of Object.keys(person)) {
+    console.log(`${prop}: ${person[prop]}`);
+}
+-------------------
+//this =reference to obj where THIS is used
+	(the object depends on the immediate context)
+	person.name=this.name
+const person1={
+	name:"WCypher",                          ${person1.name}
+	syHello: function(){console.log(`hi i am ${this.name}`)} //add this property
+}
+
+console.log(this) //print window object
+->this keyword not work in arrow function 
+--------------------------------------------------------------
+//constuctor =special method for defining the properties and method of objects.
+
+
+function  Car(make,model,year){       //constructer 
+          this.make=make,
+	  this.model=model,
+	  this.year=year,
+	  this.drive=function(){console.log(`you drive ${this.model} `)}
+}
+
+const car1=new Car("Ford","Mustang",2025);
+const car2=new Car("Chevrolet","Camaro",2025);
+
+console.log(car1.make);
+car1.drive();
+------------------------
+//class = cleanner way to work with objects
+	ex. static keyword,encapsulation,inheritance/blueprint
+
+class Product{
+	constructor(name,price){	
+	  this.name=name;	
+	  this.price=price;
+	}
+	
+	displayProduct(){
+	      console.log(`Product:${this.name}`);
+	      console.log(`Product:${this.price}`);
+	}
+	calculateTotal(salesTax){
+	    return this.price +(this.price * salesTax);
+	}		
+}
+const product1 = new Product("Shirt",19.99);
+
+product1.displayProduct();
+
+const salesTax=0.18;
+
+const total=product1.calculateTotal(salesTax);
+    console.log(`Total price with tax $${total.toFixed(2)}`);
+----------------------------------------------------------
+//Static keyword  define property/method that belongs to 
+	the class itself rather than object created for a class
+       (class owns static not the object)
+
+class MathUtil{
+	static PI=3.1415;
+	static getDiameter(radius){
+		return radius * 2;	
+	} 
+} 
+!//const MathUtil =new MathUtil();
+
+console.log(MathUtil.PI);  //no need object to create can call class iteself
+console.log(Math.Util.getDiameter(10));
+
+//static belong to class not object created   Class.static_keyword
+
+class Car {                     #static keyword is used by class
+  static count = 0;
+  constructor(username) {
+    this.username = username;
+    Car.count++;
+  }
+  static counter() {          #static method
+    console.log(`${Car.count}`);
+  }
+  user() {
+    console.log(`${this.username}`);
+  }
+}
+const car1 = new Car("wcypher");    # usercount=2 more obj
+car1.user();
+Car.counter();
+
+
+--------------------------------------
+
+console.log(user1.username);
+console.log(user1.userCount);!
+console.log(User.userCount);  
+
+user1.sayHello();
+       User.getUserCount();    #static Method call
+//inheritance = allows a new class to inherit properties p ->child
+class Animal{
+	alive=true;
+	eat(){
+		console.log(`This ${this.name} is eating`)
+	}	
+	
+}
+class Rabbit extends Animal{
+	name:"rabbit";
+}
+const rabbit =new Rabbit();
+ 
+console.log(rabbit.alive);
+rabbit.eat();
+------
+//this = this object
+  super = the parent
+
+//super= keyword is used in clases to call constructor /access properties and method of a parent class
+class Animal{
+	
+	constructor(name, age){
+	this.name name;
+	this.age age;
+	}
+        move(speed){}
+} 					using super() keyword in child class
+class Rabbit extends Animal{           //instead of calling all in seperate class call in parent class
+	constructor (name, age, runSpeed) {
+	super(name, age);
+	this.runSpeed = runSpeed;
+	}
+	run(){
+		console.log(` `);
+		super.move(this.runspeed);
+	}
+}
+class Fish extends Animal{
+	constructor(name, age, swimSpeed) {
+	super(name, age);
+	this.swimSpeed swimSpeed;
+
+const = rabbit = new Rabbit("rabbit",1,25);
+rabbit.run();
+----------------
+
+
+---------------------------
+//Error =An object that is created to represent a problem that
+	occurs occur often with user input or establishing a connection
+	prvents the normal flow of program
+
+//try {} =Encloses code that might potencially cause an error
+//catch [{} = Catch and handle any throw Errors from try{}
+//finallly {} =Always get executed
+
+Network Error
+Promise Error
+Security Error
+try{
+	console.log(x);
+} 
+catch(error){
+	console.log(error);	
+}
+finally block used for Close files,Close Connections ,Release resource
+
+intensionaly throw an error
+    if (divisor==0){
+	throw new Error("You can't divid by 0");
+}
+    if(isNaN(divident) ||isNaN(divisor)){
+	throw	 new Error("value must be a no.");  
+}
+//syntax error(js cannot read "here's" )/invalid unexpected token 
+,type error("hello".pop() not a function)
+,reference error(c is not defined)
+
+A RangeError is thrown when we're giving a value to a function, but that value is out of the allowed range of acceptable input values.
+
+try
+throw new ReferenceError();
+
+//Undefined datatype (when a fun call not return a value)
+(var noise; console.log(noise)) 	 game.obj; 
+
+/NULL datatype, Intensional absence of an object  (var letter="abc" letters.match(/d/);) //not defined
+
+Empty String  var name=''
+
+
+  throw new Error();   hello not printed throw an error
+  console.log("Hello");
+-----------------------
+//getter =special method that makes a property readable
+//setter =special method that makes a property writable
+
+//validate and modify a value when reading/writing a property
+
+class Rectangle{
+	constructor(width, height){
+	this.width = width;
+	this.height = height;
+	}
+     set width(newWidth)(       //setter set width,height --writable not readable
+	if(newwidth > 0) {
+	    this._width = newWidth;  //_width private property cannot touch 
+
+        else{
+	console.error("Width must be a positive number");  //undefined
+	}
+	if(newheight > 0) {
+	    this._height = newheight; // _width private property cannot touch 
+
+        else{
+	console.error("Height must be a positive number");  //undefined
+	}
+	get width(){            //getter come into picture due to setter
+	 return `${this._width.toFixed(2)}v`;
+	}
+	get height(){
+	 return this._height;
+	}
+	get area(){        //print getter as it was a property
+	 return this._width*this._height;
+	}
+        
+}
+const rectangle=new Rectangle(-1000000, "pizza");
+
+rectangle.width =5;
+rectangle.height =6;
+
+console.log(rectangle.width);
+console.log(rectangle.height);
+console.log(rectangle.area);
+----------------------------------
+another example
+  set firstName(newFirstName)( 
+	if(typeof newFirstName==="string" && newFirstName.length>0) {
+	    this._firstName =newFirstName;   
+
+        else{
+	console.error(" Firstname must be non empty string"); 
+	}
+	
+	set age(newAge){
+		if(typeof newAge==="number" && newAge>=0){
+		this._age=newAge;
+		}
+	}
+	else{
+	console.error("Age must non Negative"); 
+	}
+----------------------------------
+destructuring =extract values from arrays and objects,]
+		then assign them to variables in a convinient way
+		[] = to perform array destruring
+		{} = to perform object destruring
+---Example:1
+//Swap value of two variable
+	
+let a=1;
+let b=2;
+[a,b]=[b,a];
+
+console.log(a)
+            b
+// Swap element in an Array
+
+const colors=["red","green","blue"];
+[colors[0],colors[4]]=[colors[4],colors[0]];
+ console.log(colors)
+
+//Assign Array element to variables
+
+const [firstColor,secondColor,...extracolors]=colors;
+
+console.log(firstcolor);
+console.log(extracolor);
+
+//Extract values from objects
+
+const person1={
+	firstName:"WCypher",
+}
+
+const {firstName,lastName,job="Unemployed"}=person1; //undefined/notdefined -assign default value
+console.log(firstName);
+console.log(job);
+
+//Destructuring in function pararmeter
+
+function displayPerson({firstName,lastName,age,job}){
+	console.log(`name:${fistname}`)
+}
+const person1={
+	firstName:"WCypher",
+}
+displayPerson(person1);    passing object in function
+------------------------------------------------
+//nested objects =Object inside of other Objects.
+		Allows you to represent more complex DataStructure
+	   	Child Object is enclosed by a parent object
+
+		person{Address{},ContactInfo{}}
+
+const person={
+	fName:"",
+	age:55,
+	isStudent:true,
+	hobbies:["",""]
+	address:{
+		street:"",
+		city:"",
+	}
+}
+c.l(person.fName)
+	  .hobbies[0]
+	  .address.street
+
+iterating nested object
+
+for (const property in person.address){
+	c.l(person.address[property]);
+}
+------
+//using class crete object then do same thing
+----------
+//Array of Objects
+const fruits =[{name:"apple",color:"red"},{}]
+
+fruits[0].name
+ fruits.push({name:"grapes",color:"purple  "});
+ fruits,pop();
+ fruits,splice(1,2);
+//---forEach()-----
+
+fruits.forEach(fruit=>console.log(fruit.color))
+
+//-----map()----
+const fruitNames =fruits.map(fruit=>fruit.name);
+c.l(fruitsNames)
+//--filter()--
+const redfruits=fruits.filter(fruit=>fruit.color==="red");
+c.l(redfruits)                            .calories<100
+//----reduce((accumulater,element))----
+
+const maxfruit=fruits.reduce((max,fruit)=>fruit.calories>max.calories?fruit:max
+
+-----------------------------------------------------------
+sort() =method used to sort element of an array
+         lexicographic order not alphabetic order
+               lexicographic =alphabets+number+string
+let fruits=["apple","orange"]
+
+fruits.sort()
+c.l(fruits);
+let num=[1,3,2];
+
+num.sort((a,b)=>a-b);  //b-a reverse order
+
+//for array object
+
+const people=[{name:"spongebob",age:30},{}];
+
+
+people.sort((a,b)=>a.age-b.age);
+
+c.l(people)
+
+//for name people.sort((a,b)=>a.name.localeCompare(b.name);
+
+c.l(people);
+
+
+//Date(year,month,day,hour,minute,second,ms)
+const date = new Date(2024,0,,1,2,3,4,5);
+const date = new Date("2024-01-02T12:00:00Z");
+
+const year=date.getFullYear();
+		.getMonth();
+		.setMonth();
+console.log(date);
+
+const date1=new Date("2023-12-31");
+if(date2 > date1){
+	console.log("Happy new year");
+}
+
+---------------------------
+
+//closure =A function defined inside of another function,
+	   the inner function has access to the variables
+	    and scope of the outer function.
+	    Allow for private variables and state maintainece
+           Used frequently in JS framworks: React,Vue,Angular
+
+function outer(){
+	let msg="Hello";  //outer function closure property inside ()
+	
+	function inner(){
+		console.log(msg);
+	}
+	inner();    //inorder to call inner funtion call here	
+	           // inner () has all properties of outer funtion 
+
+}
+outer();  
+------------------
+function createCounter(){
+
+	let count=0;
+	
+	function increment(){                 1 2 3 4 counter.increment()
+	count++;
+	c.l(`count incresed to ${count}`);
+	}
+	return (increment);
+}
+
+const counter=createCounter();
+
+counter.increment();
+    
+//setTimer() =function in JS
+	setTimerout(callback,delay)
+
+
+
+fuction sayHello(){
+	console.log("Hello");
+	}
+setTimeout(sayHello,3000);  msec
+
+
+//ES6 Module =An external file that contains reuable code 
+	      that can be imported into other JS files.
+	      write reusable code for many different apps.
+	      Can contain variables,classes,functions 2005
+<script type="module" src="index.js" ></script>
+ //include other js modules
+//each variable/class with export keyword
+               ---mathUtil.js
+export const PI=3.14159;
+
+export getCir(radius)(){
+	return 2*PI*radius;
+}
+------------------index.js--------
+import {PI,getCir} from './mathUtil';
+
+console.log(PI);
+const cir=getCir(10);
+c.log(cir)
+--------------------------------------------------------------
+//synchronous =Executes line by line consecutively in a sequencial manner Code that waits for an operation to complete
+	
+//asynchronous = Allow multiple operation to be performed concurrently without waiting Does't block th execution flow and allows the program to continue (I/O operation,network requests,fetching data)
+Handled with:Callbacks,Promises,Await
+
+function func1(callback){
+	setTimer(()=>{console.log("task1");
+			callback()},3000);
+}
+
+function fun2(){
+	console.log("Task2");
+	console.log("Task3");
+	
+}
+func1(func2);         //asyncronous code to synchronous
+-----------------------------------------------------
+DOM(DOCUMENT OBJECT MODEL) ---using JS instead of html,css
+Structure all the Elements in a TREE like REPREsentation 
+object{} that repre page in web browser
+
+
+document.getElementById("");
+console.log(document);//display html document
+console.dir(document);
+
+document.title="My website"
+document.body.style.backgroundColor="hsl(0,0,15%)";
+---------------------------------------------------------
+//element selectors =Methods used to target and manipulate
+	html elements.They allow you to select one or multipleeer
+	HTML elements from the DOM 
+
+
+//document.getElementById();     //Element or Null
+//document.getElementClassName() //HTML Collection 	
+//document.getElementsByTagName(h1,li)//HTML Collection	
+//document.querySelector(.class,h4,li,ul)	//first element or NUll
+//document.querySelectorAll(,,)	//NodeList-static they do not update on it owns --Same Class
+
+
+const myHeading=document.getElementById("myHeading");
+
+myHeading.style.backgroundColot="yellow"
+               .textAlign ="center";
+
+console.log(myHeading);
+-----
+document.getElementClassName()
+//same class     <div>div div
+ fruits[0].style.backgroundColor="yellow"
+
+//iterate  for(let fruit of fruits){fruit.style}
+//Array.from(fruits).forEach(fruit=>{ fruit.style =""});
+--------------------------------
+
+//DOM Navigation = The process of navigating through the structure
+	of an HTML document using JS
+
+//.firstElementChild
+//.lastElemengtChild
+//.nextElementSibling
+//.previousElementSibling
+//.parentElement
+//.children
+
+//
+const element=document.getElementById("fruits");
+const firstChild=element.firstElementChild;
+
+  firstChild.style.backgroundColor = "yellow";
+
+
+--------------Example 1 <h1>---------------------------
+in DOM using js
+// STEP-1  create the Element    		
+	const newH1=document.createElement("h1");
+	
+// Step-2  Add attributes/properties
+	newH1.textContent="I Like Fruits"
+ 	newH1.id="myH1";      
+	newH1.style.color="tomato"; 
+	newH1.style.textAlign="center";
+
+//step-3   Append ELement to DOM
+	//document.body/getElementById("").append(newH1); /prepend
+
+			   .querySelectorAll(".box")
+	const box2=document.getElementById("box2");
+	document.body.insertBefore(newH1(newelement),box2(currentelement))
+ 
+                
+	//document.getElementById("box1").append(newH1);  //box1 div
+
+//Remove HTML Element --Select parent Element remove child
+ 
+>>> document.body/getElemenyById("box1").remove(newH1);
+---------------------------------------------------------------------------------------------
+//eventListner =Listen for specific events to create interactive web-pages
+	events:click,mouseover,mouseout
+	.addEventListner(event,callback);
+
+const myBox =document.getElementById("myBox");    
+const myButton=document.getElementById("mybutton");
+
+myBox.addEventListener("click",event=>{        x//1.div section change myBox. |event.target==myBox
+	myBox.style.backgroundColor="tomato";  // mybox with mybox events
+	myBox.textContent ="I will 😁";
+});
+
+myButton.addEventListener("mouseover",event=>{    //2. Button with button events
+	event.target.style.backgroundColor="yellow";
+	event.target.textContent ="Don't do it";
+});
+
+myButton.addEventListener("mouseout",event=>{  //3.Button with myBox Events
+	myBox.style.backgroundColor="tomato";
+	myBox.textContent ="Ouch! 😁";
+});
+----------------------------------------------------------------
+//Key Events=Listen for specific events to create interactive web pages-- key press on keyboard
+	events:keydown,keymap,keypress
+	document.addEventListener(event,callback);
+
+<div id="myBox">😊<div>
+ 	
+const myBox=document.getElementById("myBox");
+
+documentt.addEventListener("keydown",event=>{
+		myBox.textContent="😊";
+		myBox.style.backgroundColor="tomato";
+	})
+
+documentt.addEventListener("keyup",event=>{
+		myBox.textContent="🫡";
+		myBox.style.backgroundColor="blue";
+	})
+--------------------------------
+const myBox=document.getElementById("myBox");
+const moveAmount=10;
+let x=0;
+let y=0;
+
+document.addEventListener("keydown",event=>{
+	if(event.key.startswith(("Arrow")){
+	
+	switch(event.key){
+		case "ArrowUp":
+		     y -=moveAmount;
+		     break;
+                case "ArrowDown":
+		     y +=moveAmount;
+		     break; 		
+		case "ArrowLeft":
+		     x -=moveAmount;
+		     break;
+		case "Arrow+Up":
+		     x +=moveAmount;
+		     break;
+	}
+	
+	myBox.style.top=`${y}px`;
+	myBox.style.left=`${x}px`;
+	
+});
+--------------------------------------------------------------
+show img click on button hide  using JS
+
+myImg.style.display="none";/block 
+
+-----------	 
+// NodeList = Static collection of HTHL elements by (id, class, element)
+Can be created by using querySelectorAll()
+Similar to an array, but no (map, filter, reduce)
+NodeList won't update to automatically reflect changes
+
+button class="mybutton">Button1<button>  5 same class
+ 
+css 
+.myBttons{ margin:10px,border:noen;border-radius:5px;padding:10px 15px}
+
+let button =documetn.querySelectorAll(".myButton");
+
+//Add html/css properties
+
+button.forEach(button =>{
+	buttton.style.backgroundColor="green";
+	button.textContent+="😊";
+});
+
+//Click event listener
+
+button.forEach(button =>{
+	button.addEventListener("click",event=>{
+		event.target.style.backgroudColor="tomato";
+   });) 	
+
+});
+
+//MOUSEOVER +MOUSEOUT event listener
+
+button.forEach(button =>{
+	button.addEventListener("mouseover",event=>{
+		event.target.style.backgroudColor="tomato";  hsl 50%
+   });) 	
+
+});
+
+
+//ADD AN ELEMENT
+
+const newButton=document.createElement("button"); s1
+newButton.textContent="Button 5"; s2
+newButton.classList= "myButton";
+document.body.appendchild(newButton);  s3
+console.log(buttons);
+  
+...the button visible in DOM not in Console to do so add
+
+button=document.querySelectorAll(".myButton");
+
+console.log(button);   //node list  has 5 Elements	
+
+//REMOVE AN ELEMENT
+
+button.forEach(button =>{
+	button.addEventListener("click",event=>{
+		event.target.remove();
+		button=document.querySelectorAll(".myButtons");
+		console.log(buttons);
+   });) 	
+
+});
+---------------------------------------------------------------------
+//classList  = Element property in JavaScript used to interact with an element's list of classed (CSS classes)
+	Allows you to make reusable classes for many elements across your webpage.
+
+//add() //remove 
+//toggle(Remove if present,Add if not)
+//replace(oldclass,newclass)
+//contains()
+
+<button id="myButton">My Button</button>   add button class using js
+
+#id{}
+.eneabled{   using js enabled
+	background-color:blue;
+}
+.hover
+
+const mybutton=document.getElementById("myButton");  
+mybutton.classList.add("enabled"); .remove
+
+//add 
+
+//mybutton.classList.add("hover"); will hover but i want hover cursor
+
+ 
+mybutton.addEventListener("mouseover",event=>{
+		event.target.classList.add("hover");
+   });) 	
+
+mybutton.addEventListener("mouseover",event=>{
+		event.target.classList.remove("hover");
+   });) 
+	
+//toggle
+mybutton.addEventListener("mouseover",event=>{
+		event.target.classList.toggle("hover");
+   });) 	
+
+mybutton.addEventListener("mouseover",event=>{
+		event.target.classList.toggle("hover");
+   });) 
+//replace	
+.disabled{
+const mybutton=document.getElementById("myButton");  
+mybutton.classList.add("enabled");
+
+mybutton.addEventListener("click",event=>{
+		if(event.target.classList.contains("disabled")){
+		 event.target.textContent+="d"
+		
+}else{
+		event.target.classList.replace("enabled","disabled");
+}    
+});) 	
+
+-------------------------------------------------------
+fetch = Function used for making HTTP requests to fetch resources
+ 
+	(JSON style data,images,files)
+	Simplifies asynchronous data  fetching in JavaScriptt and
+	used for interacting APIs to retrive and send
+	
+feture(url,{options})
+
+
+fetch("url",)
+      .then(response=>response.json())
+      .then(data=>console.log(data.id))
+      .catch(error=>console.error(error));
+ 
+
+//fetching from API
+
+	const pokemonName =document.getElementById().value.ttoLowerCase();
+
+	const response= await fetch()
+	
+	if(!response.ok){
+		throw new Error("Could not fetch data");
+	}
+
+	const data =await response.json();
+	const pokemonSprite=data.sprite.font_default;
+	const imgElement=document.getElementById("pokemonSprite");
+
+	imgElement.src =pokemonSprite;
+	imgElement.style.display="block";
+	
+try catch
+
+
+----------------------------------------
+< Code Runner Extention vscode
+ insttall node.js on windows
+
+Node.js is a cross-platform, open-source JavaScript runtime environment that can run on Windows  V8
+vaScript to write command line tools and for server-side scripting
+jQuery
+Reacrt official site web tools library
+
+var person=""
+console.log("hello",person);
+
+string+7  o/p as if they were string
+  property key and property value    variable name variable value
+>
+======>JSON -file to JS<==== convert into object to used
+
+'{"greeting":"hello"}'
+
+const jsonStr='{"greeting":"hello"}'
+
+const aplainObj = JSON.parse(jsonStr) //JSON.parse string to obj
+
+//check
+aPlainObj.greeting="hi"  //update file
+-------JS to JSON file
+const data={
+	firstname:"WCYPHER",
+}
+JSON.stringfy(data)
+--------------------------
+Testing of 3 types 
+e2e
+Integrstion testing Unit(funtion/method)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

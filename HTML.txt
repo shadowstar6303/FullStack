@@ -1,0 +1,335 @@
+----------folder(( html css(folder(styles)) js(folder(script))
+
+Frontend developers use the Open Graph Protocol to improve the user experience of shared links because it helps social media platforms create a preview of the shared web page.       
+
+html(hyper tex-t markup lang)
+prettier exten aligh while saving
+<html><html>
+starting tag  closing tag
+size h1>h2 >h3
+<h1>     hehjasjk  </h1> ----h1 tag
+initial   attributes         final
+<----------h1 element-------------->
+               <html>
+         <head>      <body>
+	 <title>     <h1> <p><pre>(count spaces)
+ <head> ---metadata
+SSL Certificate https
+----------------------------------------------------------
+<!DOCTYPE html>  (html5 browser show)
+<html>
+
+<head>  
+<title>My first web page</title>
+</head>
+<body>
+   <h1>Hello World</h1>
+</body>
+
+</html>
+<header id="header">this is header</header>
+------------------VSCODE liveserver   (ALT+L+O  --open)
+hypertext transfer protocol
+http://127.0.0.1:5500/index.html
+Protocol Domain Filepath
+Http request http response
+WEb browser Web server Db
+A VPS, or Virtual Private Server, is a virtualized server environment that provides dedicated resources and control to users within a shared physical server infrastructure.
+Different Types of Hosting
+Shared Hosting -small website
+Virtual Private Services -More Expensive(Sperate CPU)
+Dedicated Hosting- MOre than VPS hosting
+Cloud Hosting-No Limitations,Pay only used,serverfail switch,Scalable
+192.168.1.1 ipv4
+2001:											0db8:85a3::8a2e:0370:73 ipv6
+400 Bad Request
+  1 Unauthorize
+  3 Forbidden
+  4 Not Found 
+405
+------------------
+500 internal Server Error
+502 Bad Gateway
+503 Service unavilable
+---------------------
+Dynamic Host Configuration Protocol (DHCP)   -website ip
+Domain Name System Protocol (DNS)
+Internet Message Access Protocol (IMAP)
+Simple Mail Transfer Protocol (SMTP)
+File Transfer Protocol (FTP)
+Secure Shell Protocol (SSH)/Telnet
+Secure File Transfer Protocol (SFTP)
+You Call Library --Framework call you
+------------------------------------
+!
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+-----------------
+@WEBSITES
+mdn html
+W3Schools
+THE ODIN PROJECT
+
+API-act as BRidge betw systems
+------------------------  ---------------------------------
+<title>Headings<title>
+body
+<h1>Lorem6            (Tab 6 words)     Most imp line
+ h2>Lorem20           
+p>Lorem20            (Tab paragraph)    Least imp lines
+<p> fsdf sdfas fdsf <strong>hello<strong> <p>
+<b>,<em>,<i>
+
+<blockquote>
+Used to describe a quotation.
+
+Emmet Documentation--Shortcut word to generate lines
+===============(img on web)============================
+ <img src="./123.jpg" width="300px" height= alt="profile photo if miss photo">                                 
+                                            placeholder(alt display image fail)
+
+=>adjust only height or width
+       copy image address  -internet photo
+<figure>                        #adding fig caption/apply a markup on img
+     <img     /> 	
+     <figcaption>
+     <figcaption>
+<figure>
+
+<svg>
+Used to define Scalable Vector Graphics within a web page.
+
+===================(link)======================
+a tags  ---link to other website
+<a href="https://www.google.com"> displayname</a>
+Use the target="_blank" attribute to ensure the link opens in a new tab.
+hyper reference
+
+#anchor tag               (open new tag)
+<a href="./index.html" taget="_main"> go to index</a>
+(Clickable pic)
+<a href="" ><img src="link" alt=""></a>
+
+gmail,ph
+<a href="mailto:"></a>     
+<a href="tel:+"></a>
+
+<label>username:<label> <input>
+          <br><br> (Enter in Next Line) 
+          <hr>  (ruler line)
+  H20 Subscipt    <sub>2<sub>
+   a2             <sup>2<sup>
+
+
+tooltip   --- take cursor diffent word inject
+<h1 title="codex">Lorem ipjsfs </h1>
+-------------------------------------------------------
+title --list (4 types of list)
+<body>
+ h1>Lorem10
+  ->ul>li*3       ul-->unordered list   li--->list items
+   <ul>
+        <li>apple </li>         .apple
+        <li>orange</li>         .orange
+        <li>pineapple</li>      .pineapple
+    </ul>
+----------------
+for orderlist   press Alt+arrow work Multiple cursors
+ul->ol
+----------------------------
+block and incline element
+block---takes entire row (h1,p,div,label)
+inline----takes small space (images,link,label,span)                         
+-----------------------------------
+<div>
+<div>  container  divide into two sectors
+----------------------------
+#tabular data print (inside body)
+<table>
+	<tr>
+		<td>col 1<td>     //single row/multi col
+                <td>col 1<td>
+	<tr>
+<table>
+<thead>
+<tbody>
+<th colspan="2">  Information in two col
+
+create another table an use <tr> <th>name</th>  //bold thread
+create another table an us <tr> <td>
+        #multuple table row in a table
+<tr><tr>
+<tr><tr>
+--------------------------------------------
+<label for="myfile">Select a file:</label>
+<input type="file" id="myfile" name="myfile">
+----------------------
+<label for="gsearch">Search in Google:</label>
+<input type="search" id="gsearch" name="gsearch">
+
+
+=============(forms)==========================
+<h1>Login form</h1>
+<form>
+        <input type="text">
+</form>
+<form>
+        <label for="email">         //not read inside <>
+	       email:           //write on site
+	        <input type="text" name="email">            //emmet input,button
+ 	</lable>                                                       
+        <label for="password">
+	       password:
+	        <input type="password" name="pass" id="">
+	</lable>  
+        <button type="submit">Login</button>      #button for submit/reset
+                                                  #submit to server
+</form>
+#checking a Email @ or not
+<form>
+               <label for="email">       
+	       email:
+	        <input type="email" name="email" id="">
+		</label>
+		<button type="submit">Login</button>
+</form>		
+--------------------------------------------------------------
+      Ctrl + Shift + i      (Web inspector)  view page source right click on it
+
+         #taking input as url,
+ <input type="url" name="email" id=" ">
+ <input type="radio/checkbox"         #Create two checkbox another label
+   form         <label for="Games">       
+	       cricket:
+	        <input type="checkbox" name="cricket" placeholder="Enter Name" id="">
+		</label>
+
+label/select/option/Dropdown menu                             form
+  <form action="/action.php">		lable      button(out of label)   
+    <label for="Games">                         select 
+        <select 
+name="Games" id="Games">              option
+            <option value="Football">Football</option>     ctrl+space(choose code)
+            <option value="cricket">cricket</option>
+            <option value="hockey">hockey</option>
+        </select>
+        </label>
+        <button type="submit">submit</button>
+  </form>
+#commenting as multiline <!-- --> (ctrl+/)
+label for month
+	input=
+
+
+    #textarea(resizable window row/col)
+        <textarea row="" col="" name="email" id=""></textarea>
+to use in email replace input with textarea
+#placeholder (what to write show)
+
+header
+main  <section>(write anything) <artical> <aside>(ads)
+footer
+div vs Span(take pnly req space)
+
+<header>
+      <hgroup>
+        <h1>My blog</h1>
+      </hgroup>         
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Contact us</a></li>
+        </ul>
+      </nav>    outside header nav use 
+</header>
+
+<article> hgroup h1 text  h2 time
+<section>  paragraph <section>
+
+<section>  <code>console.log("code")<section>
+<article>
+
+<footer>   <address>adsd <p>&copy   -special symbol
+<footer>
+
+<audio controls autoplay loop muted>
+      <source src="" type="wav">
+</audio>
+
+<!--video import  .mp4 .webm .ogg-->
+<video src="./" width="100px" controls autoplay></video>
+                              controls loop/autoplay
+
+<iframe width="420" height="315"
+src="https://www.youtube.com/embed/tgbNymZ7vqY">
+</iframe>
+
+
+#Progess bar 70
+    <label for="file">Downloading Progress </label>
+    <progress value="70" max="100">70%</progress>
+<!--ARIA😁🤞-->
+
+#favicon  96 by 96 px
+
+before <title>
+<link rel="icon" type="image/jpg" href=""
+
+
+
+
+The action attribute defines the action to be performed when the form is submitted. Usually, the form data is sent to a file on the server when the user clicks on the submit button
+Specifies where to send the form data when the form is submitted
+
+semantic HTML element:An element that clearly describes its meaning to both the browser and the developer &SEO Friendly keep u content organised
+
+Semantic Elements--
+header -introductory
+nav    -navigation bar links
+main    main content
+section  dependent content
+aside    side content
+article   independent content
+footer    closing content
+Audio/input
+<audio>
+Non Semantic ==span div
+
+SEO-(Semantic tags)
+Accessible Rich Internet Applications: A W3C specification that adds markup to HTML to communicate how user interface elements work to assistive technologies. 
+ARIA attribute is used to define a landmark region in a web page--role
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,653 @@
+CSS-Cascading Style Sheet Lang
+Sources Web (library)
+Bootstrap   (free open source)
+Materializecss
+Tailwindcss
+tailwindui
+shadecn
+Aceternity UI
+Magic UI
+DaisyUI
+Mui
+flowbite
+Ant Design
+kitchen
+1.FONT
+2.IMAGES
+3.Style
+UIkit
+MVPCSS
+
+FontAwesome   icon          add script line below link css  and  cope icon line in body
+(include spaces in class replace space with . while using css)
+
+---------------------------------------------------------
+select element | style element
+incline style-approach with in line
+
+<h1 style="color:orange">sajldf<h1>
+
+          #styling in page
+          inside
+          head below tiltle
+          below title .html
+<style>
+     h2,h1 {
+	  color:brown;
+	}
+      p {
+	   color:red;
+	}
+</style>
+         #class many / id one
+<style>
+ 	.browntext {
+	 color:brown;
+	}	
+</style>
+<h2 class="browntext">sadsjlk<h2>
+
+          #using  style.css
+link:css
+<link rel="stylesheet" href="style.css">
+GOOGLE FONTS APIS
+
+style.css
+p {
+      color:;
+      font-size:125px;
+      margin:0 auto;
+      padding:100px
+      
+  }
+=======================CSS========================
+font-family:Roboto,verdana,arial;
+font-size:5em /2em enough   percentage
+font-style:
+border-style:                        body{magin:0}
+text-shadow:3 3 5
+box-shadow:3 3 5px  <div id=box><div> #box
+margin:50      area ouside element
+width:250
+justify-content:center
+align-items:center
+height:250/100vh             2 elemnt same (.)class but diff id
+float:left
+                           display:block    for label
+                             text-align:center
+padding: left side
+text-align:center
+boder-radius:15px
+position:reltive
+top=10px
+position:stiky;         stick div while scroling/-web sticky opposite
+background-color:linear-gradiant(to right,4 colors)      
+body{}
+background-image: url();
+background-repeat:no-repeat:
+background-position:center;
+background-attachment:fixed; //no scroll
+background-size:cover;
+backdrop=filter:blur(5px) width:100px
+
+#combinators=explains the relationship btw listed seletors =
+div inside div  #containder + p{}
+  
+div p {                #(space),desecendant(select all p elements regardless of div depth)                  
+  color: blue;
+}
+div > p {              # > child,Selects only direct child <p> elements of a <div>  
+  color: red;
+}
+div + p {              # + adjacent sibling,Selects the first <p> element immediately after a <div>
+  color: green;
+}
+div ~ p {              # ~ general sibiling,
+  color: purple;       #Selects all <p> elements that are siblings of a <div>
+}
+
+<!--   pseudo class --> keyword added to selector
+button:hover{         @when element is selected
+       font-size:1.1em;
+	 background-color:
+}
+button:active{        @ehen element is clicked
+       font-size:1.1em;
+	background-color:
+}
+a:link          @element without click/touch
+a:hover
+a:active
+a:visited
+li:hover{ background-color:yellow}
+li:not(:hover)       #anything not selected
+li:nth-child(even/n)   #element will be selected
+#greeting p        display:none               &invisible sel visble
+#greeting:hover p     display:block
+
+<!--      Pseudo-elements =keyword added after a selector that's used to style a specific parts of an element-->
+h1::pseudo-element
+h1::first-letter      
+p::first-line
+p::selection                    #when text white background blue
+#fruit li::before             #add emoji before text 
+       content:"✅";
+
+#apple::after
+       content:"🍎";
+#fruits li::marker            #remove ul markers
+	content:"✅"
+<!-- Pagination = method by which a document is separete into pages and no are given  -->
+div class="pagination"              < 1 2 >
+    <a href="index.html"><</a>
+    <a href="index.html" class="active" >1</a>
+    <a href="page2.html">2</a> 
+    <a href="page2.html">></a>
+
+<!--       Drop down menu   -->
+<div class=dropdown>
+ button
+ <div class=content>
+     <a href="">Apple</a>
+     <a href="">
+  <div>
+<div>
+.dropdown .content
+       position:absolute;
+       display:none
+.dropdown:hover .content
+         display:block
+.dropdown:hover button           transition:background-color 0.25s; #button
+         backgroun color
+.dropdown  a:hover
+         bacg    color
+---------------------
+Navbar  -list-style-type:none  (remove bullet point)
+text-decoration:none;
+
+.aside width:20%,float:left      line1         |  |  |
+section width:40%,float:left     line2
+article width:40%,float:left     line3
+ *{ box-sizing:border-box;} =aline in one row
+
+footer  display:block;clear:both;padding:25px
+
+@media screen and (max-width:600px){    (Responsive CSS/phone screen)
+           aside,sectio,article{                  /body{backgroud-color:blue;}
+            width:100%
+}
+}
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+  }
+}
+div to inline=  .{display:inline-block}          
+
+img click open full in new tab  taget="_blank"
+
+.gallery img   width:100% height:auto
+.gallery    width:250px
+----------------------------
+div class
+   display:flex;      move all elements in row
+   flex-direction:row(default);
+   /justify-content:flex-start(default)/flex-end/center/space-between
+   height:90vh
+   align-items:flex-start(default)/flex-end/center/baseline
+   flex-wrap:nowrap(default)/wrap   (compress extra items to normal items)
+#id   align-self:center
+       order:1/-1
+       transform:translateX(50px) any value
+------------------------------------------------
+Animation
+#box
+    animation-name:slideLeft;
+    animation-duration:2s;
+   #Xtra animation-iteration-count:infinite
+         animation-direction:normal;
+         animation-play-state:running;
+	 animation-timing-function:ease-in-out/linear;
+}
+@keyframes slideLeft{                     left move from right
+         from{transform:translateX(300%)}		
+}
+@keyframes slideRight{
+         to{transform:translateX(300%)}		
+}
+@keyframes rotate{
+	100%{transform: rotateZ(360deg)}   50% retun to original pos
+}
+@keyframes grow{
+        50%{transform:scale(2,2)}
+}
+@keyframe shrink{
+	50%{transform:scale(0.5,0.5)}
+}
+@keyframe fade{
+	50%{opacity:0}
+} 
+# fade in 
+intial in #box opacity:0
+@keyframe fade{
+	50%{opacity:1}
+@keyframe colorChange{
+	0%{background-color:hsl}
+	20%{backgtound-color:}
+	---100%
+}
+@keyframe glow{
+	50%{box-shadow: 0px 0px 50px yellow}
+}
+      @keyframes slideIn {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(0); } 
+      }
+      .element {
+  	animation: slideIn 0.5s ease-in-out;	
+      }	
+
+p::before {
+  content: "🔹";
+}
+
+z-index:1000; //stack 
+top:7px;	
+
+
+
+
+
+
+
+==================================================
+#login page  signup page email firstname lastname passowd signup
+<style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #1a1a1a;
+        margin: 0;
+        padding: 0;
+        height: 300px; /*100vh browser shrink remain center*/
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .card {
+        background-color: #f2f6f8;
+        border-radius: 8px;
+        width: 300px;
+        h2 {
+          color: ;
+          text-align: center;
+          margin-bottom: 20px;
+        }
+        form {
+          display: flex;           // padding: 10px;
+          flex-direction: column;
+          gap: 30px;
+        }
+        input {
+          margin-bottom: 15px;#This CSS snippet will add a 20-pixel margin below the specified element.
+          padding: 10px;#leftside space
+          border-radius: 5px; edges cure
+          border: none;
+          background-color: #eaf7ff;
+          }
+        button {
+          background-color: #1a1a1a;
+          color: white;
+          padding: 10px;
+          border-radius: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>Login</h2>
+      <form>
+        <input type="email" name="" placeholder="Email" />
+        <input type="password" name="" placeholder="password" />
+        <button type="submit">Login</button>
+---------------------------------------------------------------------
+<style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: rgb(242, 255, 63);
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .card {
+        background-color: rgb(115, 249, 155);
+        border-radius: 10px;
+        width: 200px;
+      }
+      h1 {
+        text-align: center;
+        padding: 12px;
+        margin-bottom: 1px;
+        color: rgb(214, 64, 64);
+      }
+      form {
+        padding: 10px;
+      }
+      input {
+        background-color: rgb(136, 201, 255);
+        border-radius: 8px;
+        border: none;
+        padding: 2px;
+        margin-bottom: 3px;
+        width: 100%;
+      }
+      button {
+        background-color: azure;
+        border: none;
+        width: 100%;
+        border-radius: 8px;
+      }
+    </style>
+-----------------------------------------------------------------
+#selectors  1--5 hover
+DOM(DOCUMENT OBJECT MODEL)
+convert html into object or Tree Renders into browser
+div inside div tree
+1.Universal selecter(all elements)
+* {
+	margin:0; #size btw diff elements
+	padding:0;#space left side element
+	box-sizing: border-box;
+  }
+2.Type Selector(all p same category)
+p {
+	font-size:16px;
+	margin:10px 20px 15px 20px;top->clockwise->left
+        padding:1px 2px 3px top LR Bottom
+}
+3.Class Selector  (Tailwind generate clases)
+.highlight {
+}
+<input class="" >
+4.ID Selector
+<h1 id="heading"
+#header {
+	backgroundcolor	
+}
+5.Attribute Selector
+ input[type="text"] {
+	border: 2px solid #21a2c9 
+}
+<input type=""
+6.Descendant Selector R to L Read
+article p {
+      font-style:italic
+}
+<article> <p>
+7.child Selector  
+div > p {}
+
+
+<div>
+a p img div   select
+         p   decedent not selected
+<div>
+   <P>
+   <div>
+	<p> decende
+   <div>
+<div>
+--------------------------------
+8.Adjacent Sibiling
+h1 + p {
+	font-weight:bold	
+}
+9.General Sibling
+h2 ~ p {}
+10.Pseudo-Class (when selec get highlight)
+a:hover {
+	back color
+	textt decoration:none
+	color
+	padding 5px
+	margin 4px
+}
+11.Pseudo-element sele
+p::firstt-leeter {
+	font-weight: bold
+	font size 30px	
+}
+12.Grouping selector
+h1,h2 {}
+---------------------------------------------------------
+Box Model-2  but implementation
+ .box-model-demo {
+	width:300px;
+	height:200px;
+	padding:20px;
+	border:5px color ;
+	margin:30px;
+	background-color:
+}
+  .content-box {
+	box-sizing:content-box;
+	background-color:white;
+}
+Content Box Model(Default)
+width=300px +padding 40px+border 10px
+height=200px +padding 40px+border 10px
+
+.border-box {
+ #display:inline
+ box-sizing:content-box;
+ background-color:
+}
+
+Border-box
+width=300px (included padding+border)
+height=200px (included padding+border)
+
+Inline element ignore width and height
+
+::after (pseudo element cosmetic content to element)inline
+.class:: after {
+	content:"<-exciting";""
+	color:green;
+	}
+1.Horizontal with Underline Effect
+Navigation Bar
+<style>
+      body {
+        background-color: black;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        margin: 0;
+      }
+      .n_nav {
+        bottom-margin: 10px;
+      }
+      h1 {
+        color: aliceblue;
+      }
+      .nav1 ul {
+        background-color: aliceblue;
+        list-style-type: none;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .nav1 a {
+        display: block;
+        text-decoration: none;
+        color: rgb(245, 245, 245);
+        padding: 10px 10px 10px 10px;
+        background-color: #f56b6b;
+      }
+      .nav1 .color {
+        background-color: blue;
+        color: white;
+        border: none;
+	cursor:
+        padding: 10px 10px 10px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="n_nav">
+      <h1>1.Horizontal with Underline Effect</h1>
+      <nav class="navbar">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Products</a></li>
+          <li><button class="color" type="submit">Login</button></li>
+        </ul>
+      </nav>
+    </div>
+-------------------------------------------------------------------------------------------
+animation while selecting text
+      .nav1 a::after {
+        content: "";
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        background-color: #6200ff;
+        transform: scaleX(0);
+        transition: transform 0.3s ease-in-out;
+      }
+      .nav1 a:hover::after {
+        transform: scaleX(1);
+      }
+      .nav1 li {
+        display: inline;
+      }
+      .nav1 a {
+        text-decoration: none;
+        color: black;
+        padding: 5px 15px;
+        position: relative;
+      }
+2.Vertical with Hover Effect
+ul contains margin and padding =0
+ .nav2 {
+        background-color: rgb(223, 223, 223);
+        width: 200px;
+        padding: 20px;
+      }
+      .nav2 ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+      .nav2 li {
+        margin-bottom: 12px;
+      }
+      .nav2 a {
+        text-decoration: none;
+        color: rgb(18, 10, 10);
+        display: block;
+        padding: 10px;
+        width: 100%;
+      }
+      .nav2 a:hover {
+        background-color: rgb(197, 49, 255);
+      }
+      .nav2 .color {
+        border: none;
+        background-color: rgb(97, 97, 255);
+        color: white;
+        padding: 20px;
+        width: 100%;
+margin-left: 5px;
+        cursor: pointer;
+	boder 1px white
+
+3.Horizontal with Dropdown
+.nav3 {
+        background-color: rgb(223, 223, 223);
+        padding: 10px;
+      }
+      .nav3 ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .nav3 a {
+        text-decoration: none;
+        color: rgb(255, 11, 11);
+        padding: 10px;
+        display: block;
+      }
+      .nav3 .dropdown-content {
+        display: none;
+      }
+      .nav3 .dropdown:hover .dropdown-content {	
+        display: block;
+        position: absolute;
+        background-color: aliceblue;
+        color: black;
+        min-width: 150px;
+      }
+    </style>
+ <h1>3.Horizontal with Drop</h1>
+    <nav class="nav3">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li class="dropdown">
+          <a href="#">About</a>
+          <div class="dropdown-content">
+            <a href="#">contact</a>
+            <a href="#">return</a>
+            <a href="#">back</a>
+          </div>
+        </li>
+        <li><a href="#">Products</a></li>
+        <li><button class="color" type="submit">Login</button></li>
+      </ul>
+    </nav>
+---------------------------------------------
+Tailwind CSS sell code
+---------------------------
+UI and Frameworks and Libraries
+Booststrap Framework
+https://getbootstrap.com/docs
+Link:css below title
+Link:script  in body
+
+div class="container"
+div class="row" 
+div class="col"
+          h1,img,a
+<div> 
+div class="col-4" lg-6
+    table
+    <table class="table" <table>trtd
+div class="alert alert-info" role="alert">
+
+
+
+your code calls Library
+Framwork call you  -Prewritten Code
+NPM(Node Package Manager)
+Responsive Design  Mobile
+1920 1080 pc pixcel
+Flexible Girds  Margins Gutter
+Breakpoint-Adapt to provide a Responsive web
+Fixedgrid fluidgrid hybidgrid
+Class ke liye css alredy provided
+
+
+
+
+	
+
+
+
