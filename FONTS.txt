@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Top 30 Best Fonts with Tailwind CSS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts Import for Showcase -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&family=Montserrat:wght@700&family=Oswald:wght@700&family=Raleway:wght@800&family=Archivo+Black&family=UnifrakturCook:wght@700&family=Orbitron:wght@900&family=Playfair+Display:wght@900&family=Anton&family=Bebas+Neue&family=Share+Tech+Mono&family=Black+Ops+One&family=Permanent+Marker&family=Creepster&family=Luckiest+Guy&family=Press+Start+2P&family=Zilla+Slab:wght@900&family=Titillium+Web:wght@900&family=Audiowide&family=Staatliches&family=Russo+One&family=Changa+One&family=Fjalla+One&family=Teko:wght@700&family=Patua+One&family=Rubik+Mono+One&family=Sigmar+One&family=Ultra&family=Vast+Shadow&family=Fredericka+the+Great&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="top-30-fonts-tailwind.css">
+</head>
+<body class="bg-gray-950 text-white min-h-screen p-6">
+  <h1 class="text-3xl md:text-4xl font-bold text-center mb-8 tracking-widest montserrat">Top 30 Best Fonts with Tailwind CSS</h1>
+  <div class="max-w-3xl mx-auto flex flex-col gap-6">
+    <div class="roboto text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Roboto — Resident Evil</div>
+    <div class="montserrat text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Montserrat — Resident Evil</div>
+    <div class="oswald text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Oswald — Resident Evil</div>
+    <div class="raleway text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Raleway — Resident Evil</div>
+    <div class="archivo text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Archivo Black — Resident Evil</div>
+    <div class="unifraktur text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">UnifrakturCook — Resident Evil</div>
+    <div class="orbitron text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Orbitron — Resident Evil</div>
+    <div class="playfair text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Playfair Display — Resident Evil</div>
+    <div class="anton text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Anton — Resident Evil</div>
+    <div class="bebas text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Bebas Neue — Resident Evil</div>
+    <div class="sharemono text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Share Tech Mono — Resident Evil</div>
+    <div class="blackops text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Black Ops One — Resident Evil</div>
+    <div class="marker text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Permanent Marker — Resident Evil</div>
+    <div class="creepster text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Creepster — Resident Evil</div>
+    <div class="luckiest text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Luckiest Guy — Resident Evil</div>
+    <div class="pressstart font-bold px-6 py-3 rounded bg-gray-800 shadow">Press Start 2P — Resident Evil</div>
+    <div class="zilla text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Zilla Slab — Resident Evil</div>
+    <div class="titillium text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Titillium Web — Resident Evil</div>
+    <div class="audiowide text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Audiowide — Resident Evil</div>
+    <div class="staatliches text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Staatliches — Resident Evil</div>
+    <div class="russo text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Russo One — Resident Evil</div>
+    <div class="changa text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Changa One — Resident Evil</div>
+    <div class="fjalla text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Fjalla One — Resident Evil</div>
+    <div class="teko text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Teko — Resident Evil</div>
+    <div class="patua text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Patua One — Resident Evil</div>
+    <div class="rubikmono text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Rubik Mono One — Resident Evil</div>
+    <div class="sigmar text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Sigmar One — Resident Evil</div>
+    <div class="ultra text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Ultra — Resident Evil</div>
+    <div class="vastshadow text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Vast Shadow — Resident Evil</div>
+    <div class="fredericka text-3xl font-extrabold px-6 py-3 rounded bg-gray-800 shadow">Fredericka the Great — Resident Evil</div>
+  </div>
+</body>
+</html>

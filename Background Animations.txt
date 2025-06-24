@@ -1,0 +1,1162 @@
+🔁 1. Animated Gradient Background
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+    }
+    @keyframes gradient {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+  </style>
+</head>
+<body></body>
+</html>
+
+-----------
+🌊 3. Blob Morphing SVG Animation
+html
+Copy
+Edit
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #0f0f0f;
+    }
+    svg {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#ff9a9e"/>
+        <stop offset="100%" stop-color="#fad0c4"/>
+      </linearGradient>
+    </defs>
+    <path fill="url(#grad)">
+      <animate attributeName="d" dur="15s" repeatCount="indefinite"
+        values="
+          M0,0 C150,200 350,100 800,600 L800,0 Z;
+          M0,0 C300,400 500,0 800,600 L800,0 Z;
+          M0,0 C150,200 350,100 800,600 L800,0 Z"
+      />
+    </path>
+  </svg>
+</body>
+</html>
+-
+🔵 3. Blob Morphing (SVG + CSS)
+html
+Copy
+Edit
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blob Morph</title>
+  <style>
+    body {
+      margin: 0;
+      background: #1e1e2f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .blob {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      z-index: -1;
+    }
+
+    svg path {
+      fill: #ff6f91;
+      animation: morph 8s ease-in-out infinite;
+    }
+
+    @keyframes morph {
+      0%, 100% {
+        d: path("M302,319Q259,388,180.5,369Q102,350,87,265Q72,180,130.5,121Q189,62,266,91.5Q343,121,322,200.5Q301,280,302,319Z");
+      }
+      50% {
+        d: path("M325.5,324.5Q276,409,178.5,376Q81,343,88.5,248.5Q96,154,168,94.5Q240,35,310.5,99Q381,163,352.5,231.5Q324,300,325.5,324.5Z");
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="blob">
+    <svg viewBox="0 0 500 500">
+      <path d="M302,319Q259,388,180.5,369Q102,350,87,265Q72,180,130.5,121Q189,62,266,91.5Q343,121,322,200.5Q301,280,302,319Z" />
+    </svg>
+  </div>
+</body>
+</html>
+--------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Background Animations</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { height: 100vh; overflow: hidden; position: relative; background: #000; }
+
+    /* 10. Vertical Glitch Lines */
+    .glitch-line {
+      position: absolute;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: rgba(255,255,255,0.08);
+      animation: glitch 2s infinite;
+    }
+
+    @keyframes glitch {
+      0%, 100% { transform: translateY(0); opacity: 0.1; }
+      50% { transform: translateY(-10px); opacity: 0.3; }
+    }
+
+    /* 11. Constellation Lines */
+    canvas#constellation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    /* Additional styles will be added in JS or more <style> blocks */
+  </style>
+</head>
+<body>
+
+  <!-- Glitch Lines -->
+  <script>
+    for (let i = 0; i < 30; i++) {
+      const line = document.createElement('div');
+      line.className = 'glitch-line';
+      line.style.left = `${Math.random() * 100}vw`;
+      line.style.animationDuration = `${1 + Math.random()}s`;
+      document.body.appendChild(line);
+    }
+  </script>
+
+  <!-- 11. Constellation Lines -->
+  <canvas id="constellation"></canvas>
+  <script>
+    const canvas = document.getElementById("constellation");
+    const ctx = canvas.getContext("2d");
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+    let particles = [];
+    for (let i = 0; i < 100; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5
+      });
+    }
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = "#aaa";
+        ctx.fill();
+        for (let j = i + 1; j < particles.length; j++) {
+          let p2 = particles[j];
+          let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+          if (dist < 100) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(255,255,255,${1 - dist / 100})`;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+
+</body>
+</html>
+✨ 11. Constellation Lines
+html
+Copy
+Edit
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Constellation Lines</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #000;
+    }
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="constellation"></canvas>
+  <script>
+    const canvas = document.getElementById("constellation");
+    const ctx = canvas.getContext("2d");
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+    let particles = [];
+    for (let i = 0; i < 100; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5
+      });
+    }
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = "#aaa";
+        ctx.fill();
+        for (let j = i + 1; j < particles.length; j++) {
+          let p2 = particles[j];
+          let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+          if (dist < 100) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(255,255,255,${1 - dist / 100})`;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+</body>
+</html>
+-
+🪐 Floating Icons – Animation #15
+html
+Copy
+Edit
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Floating Icons</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+    }
+
+    .icon {
+      position: absolute;
+      font-size: 24px;
+      opacity: 0.3;
+      animation: float 20s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <script>
+    const icons = ['fa-code', 'fa-comment-dots', 'fa-gear', 'fa-cloud', 'fa-terminal'];
+    for (let i = 0; i < 40; i++) {
+      const icon = document.createElement('i');
+      icon.className = `fas ${icons[Math.floor(Math.random() * icons.length)]} icon`;
+      const size = Math.random() * 20 + 20;
+      icon.style.left = `${Math.random() * 100}vw`;
+      icon.style.bottom = `-${Math.random() * 100}px`;
+      icon.style.fontSize = `${size}px`;
+      icon.style.animationDuration = `${15 + Math.random() * 10}s`;
+      icon.style.animationDelay = `${Math.random() * 5}s`;
+      document.body.appendChild(icon);
+    }
+  </script>
+</body>
+</html>
+----
+:
+
+🌀 Abstract Flow Fields – Animation #16
+html
+Copy
+Edit
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Abstract Flow Fields</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #000;
+    }
+
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="flowfield"></canvas>
+  <script>
+    const canvas = document.getElementById('flowfield');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particles = [];
+    const numParticles = 1000;
+    const flowStrength = 0.05;
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = 0;
+        this.vy = 0;
+        this.speed = 0.5 + Math.random() * 0.5;
+      }
+
+      update() {
+        const angle = noise(this.x * 0.002, this.y * 0.002) * Math.PI * 2;
+        this.vx = Math.cos(angle) * this.speed;
+        this.vy = Math.sin(angle) * this.speed;
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+        }
+
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 0.5, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,0.2)';
+        ctx.fill();
+      }
+    }
+
+    function noise(x, y) {
+      return Math.sin(x * 3 + y * 2) * 0.5 + 0.5;
+    }
+
+    for (let i = 0; i < numParticles; i++) {
+      particles.push(new Particle());
+    }
+
+    function animate() {
+      ctx.fillStyle = 'rgba(0,0,0,0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      for (let p of particles) {
+        p.update();
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>
+🎉 Confetti Rain – Animation #17
+html
+Copy
+Edit
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Confetti Rain</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      opacity: 0.6;
+      background-color: red;
+      animation: fall linear infinite;
+      transform: rotate(45deg);
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const colors = ['#f44336', '#e91e63', '#9c27b0', '#3f51b5', '#03a9f4', '#4caf50', '#ffc107', '#ff9800'];
+    const shapes = ['square', 'circle'];
+    const count = 100;
+
+    for (let i = 0; i < count; i++) {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.left = `${Math.random() * 100}vw`;
+      confetti.style.top = `-${Math.random() * 20}px`;
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.width = `${Math.random() * 8 + 4}px`;
+      confetti.style.height = confetti.style.width;
+      confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+      confetti.style.animationDuration = `${4 + Math.random() * 3}s`;
+      confetti.style.animationDelay = `${Math.random() * 5}s`;
+      document.body.appendChild(confetti);
+    }
+  </script>
+</body>
+</html>
+🖱️ #21 – Cursor Trail Animation
+html
+Copy
+Edit
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cursor Trail Animation</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #0f0f0f;
+    }
+
+    .trail {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.5;
+      animation: fadeOut 0.6s forwards;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    document.addEventListener('mousemove', (e) => {
+      const dot = document.createElement('div');
+      dot.className = 'trail';
+      dot.style.left = `${e.pageX}px`;
+      dot.style.top = `${e.pageY}px`;
+      document.body.appendChild(dot);
+
+      setTimeout(() => {
+        dot.remove();
+      }, 600);
+    });
+  </script>
+</body>
+</html>
+🌌 #22 – Tilt Based Parallax Background
+html
+Copy
+Edit
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tilt Based Parallax</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      perspective: 1000px;
+      background: #111;
+    }
+
+    .parallax-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.1s ease-out;
+    }
+
+    .layer {
+      position: absolute;
+      width: 110%;
+      height: 110%;
+      top: -5%;
+      left: -5%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .layer.bg1 {
+      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=60');
+      z-index: 1;
+      transform: translateZ(-3px) scale(1.3);
+    }
+
+    .layer.bg2 {
+      background-image: url('https://images.unsplash.com/photo-1495567720989-cebdbdd97913?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=60');
+      z-index: 2;
+      transform: translateZ(-2px) scale(1.2);
+      mix-blend-mode: screen;
+    }
+
+    .layer.bg3 {
+      background-image: url('https://images.unsplash.com/photo-1525097487452-6278ff080c31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=60');
+      z-index: 3;
+      transform: translateZ(-1px) scale(1.1);
+      mix-blend-mode: overlay;
+    }
+  </style>
+</head>
+<body>
+  <div class="parallax-container" id="parallax">
+    <div class="layer bg1"></div>
+    <div class="layer bg2"></div>
+    <div class="layer bg3"></div>
+  </div>
+
+  <script>
+    const container = document.getElementById('parallax');
+
+    document.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 20;
+      const y = (e.clientY / window.innerHeight - 0.5) * -20;
+
+      container.style.transform = `rotateX(${y}deg) rotateY(${x}deg)`;
+    });
+  </script>
+</body>
+</html>
+📜 #23 – Scroll-Reactive Blur
+html
+Copy
+Edit
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scroll Reactive Blur</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 200vh; /* Enable scrolling */
+      font-family: sans-serif;
+      overflow-x: hidden;
+    }
+
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1600&q=60');
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+      transition: filter 0.2s ease;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      color: white;
+      padding: 4rem;
+      text-shadow: 0 0 10px #000;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+  <div class="background" id="bg"></div>
+
+  <div class="content">
+    <h1>Scroll-Reactive Blur</h1>
+    <p>As you scroll down, the background becomes increasingly blurred. This effect can be used to draw focus to the foreground content while still maintaining visual interest behind it.</p>
+    <p>Try scrolling and see how the image softens with distance.</p>
+  </div>
+
+  <script>
+    const bg = document.getElementById('bg');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const blurAmount = Math.min(scrollY / 50, 10);
+      bg.style.filter = `blur(${blurAmount}px)`;
+    });
+  </script>
+</body>
+</html>
+🧲 #24 – Magnet Motion (elements subtly follow the cursor)
+html
+Copy
+Edit
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Magnet Motion</title>
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .magnet-container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+    }
+
+    .magnet {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: #0ff;
+      border-radius: 50%;
+      transition: transform 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="magnet-container" id="container">
+    <!-- Create multiple magnetic elements -->
+    <div class="magnet" style="top: 20px; left: 20px;"></div>
+    <div class="magnet" style="top: 120px; left: 200px;"></div>
+    <div class="magnet" style="top: 200px; left: 100px;"></div>
+    <div class="magnet" style="top: 60px; left: 140px;"></div>
+    <div class="magnet" style="top: 180px; left: 40px;"></div>
+  </div>
+
+  <script>
+    const magnets = document.querySelectorAll('.magnet');
+    const strength = 40;
+
+    document.addEventListener('mousemove', (e) => {
+      magnets.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const elX = rect.left + rect.width / 2;
+        const elY = rect.top + rect.height / 2;
+        const dx = e.clientX - elX;
+        const dy = e.clientY - elY;
+
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const pullX = dx / dist * Math.min(strength, strength * (1 - dist / 300));
+        const pullY = dy / dist * Math.min(strength, strength * (1 - dist / 300));
+
+        if (dist < 300) {
+          el.style.transform = `translate(${pullX}px, ${pullY}px)`;
+        } else {
+          el.style.transform = `translate(0, 0)`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+🔮 #27 – Lava Lamp Goo
+html
+Copy
+Edit
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lava Lamp Goo</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #0a0a0a;
+      overflow: hidden;
+    }
+
+    .blob {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, #ff00cc, #6600ff);
+      border-radius: 50%;
+      mix-blend-mode: screen;
+      filter: blur(60px);
+      animation: moveBlob 20s infinite ease-in-out alternate;
+    }
+
+    .blob:nth-child(2) {
+      left: 60vw;
+      top: 40vh;
+      animation-duration: 25s;
+      background: radial-gradient(circle, #00ccff, #0066ff);
+    }
+
+    .blob:nth-child(3) {
+      left: 30vw;
+      top: 70vh;
+      animation-duration: 18s;
+      background: radial-gradient(circle, #ccff00, #66ff00);
+    }
+
+    @keyframes moveBlob {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(100px, -150px) scale(1.3);
+      }
+      100% {
+        transform: translate(-80px, 100px) scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+</body>
+</html>
+🌊 "Animated Wave Gradient Background" (CSS-Only)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Animated Wave Gradient</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+
+    body {
+      background: linear-gradient(120deg, #2b5876, #4e4376);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .wave {
+      position: absolute;
+      width: 200%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1), transparent 70%);
+      opacity: 0.4;
+      animation: drift 12s infinite linear;
+      transform: rotate(0deg);
+    }
+
+    .wave:nth-child(1) {
+      top: 0;
+      left: -50%;
+      background-color: rgba(255, 255, 255, 0.04);
+      animation-delay: 0s;
+    }
+
+    .wave:nth-child(2) {
+      top: 20%;
+      left: -50%;
+      background-color: rgba(255, 255, 255, 0.06);
+      animation-delay: 4s;
+    }
+
+    .wave:nth-child(3) {
+      top: 40%;
+      left: -50%;
+      background-color: rgba(255, 255, 255, 0.08);
+      animation-delay: 8s;
+    }
+
+    @keyframes drift {
+      0% {
+        transform: translateX(0) rotate(0deg);
+      }
+      100% {
+        transform: translateX(50%) rotate(360deg);
+      }
+    }
+
+    .content {
+      position: relative;
+      color: white;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .content h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .content p {
+      font-size: 1.2rem;
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
+
+  <div class="content">
+    <h1>Flowing Waves</h1>
+    <p>Soft ambient background for a relaxing or creative feel</p>
+  </div>
+</body>
+</html>
+✨ Glowing Triangular Mesh Grid – Enhanced
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Glowing Triangular Grid</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #0f0f0f;
+      overflow: hidden;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: white;
+      font-family: sans-serif;
+      top: 40%;
+      transform: translateY(-50%);
+    }
+
+    .content h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .content p {
+      font-size: 1.2rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="grid"></canvas>
+  <div class="content">
+    <h1>Glowing Mesh Background</h1>
+    <p>With enhanced neon glow on connection lines</p>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("grid");
+    const ctx = canvas.getContext("2d");
+    let width, height;
+    const points = [];
+    const spacing = 60;
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      points.length = 0;
+
+      for (let y = 0; y < height + spacing; y += spacing) {
+        for (let x = 0; x < width + spacing; x += spacing) {
+          points.push({
+            x: x,
+            y: y,
+            baseX: x,
+            baseY: y,
+            offsetX: Math.random() * 100,
+            offsetY: Math.random() * 100
+          });
+        }
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      ctx.strokeStyle = "#00ffff";
+      ctx.lineWidth = 1.2;
+      ctx.shadowColor = "#00ffff";
+      ctx.shadowBlur = 10;
+
+      for (let i = 0; i < points.length; i++) {
+        const p = points[i];
+        p.y = p.baseY + Math.sin(Date.now() / 1000 + p.offsetY) * 10;
+        p.x = p.baseX + Math.cos(Date.now() / 1000 + p.offsetX) * 10;
+      }
+
+      for (let i = 0; i < points.length; i++) {
+        const p = points[i];
+        const row = Math.floor(i / (Math.ceil(width / spacing) + 1));
+        const col = i % (Math.ceil(width / spacing) + 1);
+
+        const right = points[i + 1];
+        const down = points[i + Math.ceil(width / spacing) + 1];
+
+        if (right && col !== Math.ceil(width / spacing)) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(right.x, right.y);
+          ctx.stroke();
+        }
+
+        if (down) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(down.x, down.y);
+          ctx.stroke();
+        }
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener("resize", resize);
+    resize();
+    draw();
+  </script>
+</body>
+</html>
+🌌 "Interactive Particle Constellation Background" – HTML + CSS + JavaScript
+html
+Copy
+Edit
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Particle Constellation</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #0d0d0d;
+      overflow: hidden;
+    }
+
+    canvas {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: white;
+      font-family: sans-serif;
+      top: 40%;
+      transform: translateY(-50%);
+    }
+
+    .content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .content p {
+      font-size: 1.2rem;
+      color: #bbb;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="constellation"></canvas>
+  <div class="content">
+    <h1>Constellation Network</h1>
+    <p>Particles drift and connect like stars</p>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("constellation");
+    const ctx = canvas.getContext("2d");
+    let width, height;
+
+    let particles = [];
+    const numParticles = 100;
+    const maxDistance = 150;
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    function createParticles() {
+      particles = [];
+      for (let i = 0; i < numParticles; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 1,
+          vy: (Math.random() - 0.5) * 1
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = "#ffffff";
+      for (let p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Connect particles
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const a = particles[i];
+          const b = particles[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < maxDistance) {
+            ctx.strokeStyle = `rgba(0, 255, 255, ${1 - dist / maxDistance})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Update positions
+      for (let p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener("resize", () => {
+      resizeCanvas();
+      createParticles();
+    });
+
+    resizeCanvas();
+    createParticles();
+    draw();
+  </script>
+</body>
+</html>
+
