@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Cost Estimator with Charts</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #f9f9f9;
+      color: #2c3e50;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+    .container {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    form {
+      flex: 1 1 400px;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgb(0 0 0 / 0.1);
+      max-width: 450px;
+      box-sizing: border-box;
+      height: fit-content;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px 10px;
+      margin-top: 6px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    button {
+      margin-top: 25px;
+      padding: 14px;
+      background-color: #2980b9;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #1c5980;
+    }
+    #result {
+      margin-top: 25px;
+      background: #eef6fb;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: inset 0 0 10px rgb(0 0 0 / 0.05);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    #result h2 {
+      color: #2980b9;
+      margin-bottom: 15px;
+    }
+    #result ul {
+      padding-left: 20px;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    #result ul li {
+      margin-bottom: 6px;
+    }
+    .charts-wrapper {
+      flex: 2 1 700px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    canvas {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgb(0 0 0 / 0.1);
+      height: 320px !important;
+      max-width: 100%;
+    }
+    #algorithm {
+      margin-top: 40px;
+      background: #eaf2f8;
+      padding: 20px;
+      border-radius: 10px;
+      line-height: 1.6;
+      font-size: 14px;
+      color: #34495e;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #algorithm h2 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+    #algorithm code {
+      background: #d6eaf8;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: monospace;
+      font-weight: bold;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+      }
+      form, .charts-wrapper {
+        max-width: 100%;
+        width: 100%;
+      }
+      canvas {
+        height: 280px !important;
+      }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <h1>Detailed Project Cost Estimator with 18% GST</h1>
+
+  <div class="container">
+    <form id="estimateForm">
+      <label for="projectType">Project Type:</label>
+      <select id="projectType" required>
+        <option value="" disabled selected>Select project type</option>
+        <option value="construction">Construction</option>
+        <option value="software">Software Development</option>
+        <option value="marketing">Marketing</option>
+      </select>
+
+      <label for="duration">Duration (weeks):</label>
+      <input type="number" id="duration" min="1" max="52" required />
+
+      <label for="resources">Number of Resources:</label>
+      <input type="number" id="resources" min="1" max="100" required />
+
+      <label for="materials">Materials & Supplies ($):</label>
+      <input type="number" id="materials" min="0" value="0" />
+
+      <label for="equipment">Equipment & Tools ($):</label>
+      <input type="number" id="equipment" min="0" value="0" />
+
+      <label for="travel">Travel & Transportation ($):</label>
+      <input type="number" id="travel" min="0" value="0" />
+
+      <label for="subcontractors">Subcontractors & Consultants ($):</label>
+      <input type="number" id="subcontractors" min="0" value="0" />
+
+      <label for="permits">Permits & Legal Fees ($):</label>
+      <input type="number" id="permits" min="0" value="0" />
+
+      <label for="contingencyPercent">Contingency (% of subtotal):</label>
+      <input type="number" id="contingencyPercent" min="0" max="50" value="10" />
+
+      <label for="gstPercent">GST (%):</label>
+      <input type="number" id="gstPercent" min="0" max="50" value="18" />
+
+      <button type="submit">Estimate Cost</button>
+
+      <div id="result"></div>
+    </form>
+
+    <div class="charts-wrapper">
+      <canvas id="lineChart"></canvas>
+      <canvas id="barChart"></canvas>
+      <canvas id="pieChart"></canvas>
+      <canvas id="radarChart"></canvas>
+    </div>
+  </div>
+
+  <div id="algorithm">
+    <h2>Cost Estimation Algorithm</h2>
+    <p>This estimator uses the following calculation steps:</p>
+    <ol>
+      <li><strong>Labor Cost</strong> = <code>resourceCostPerWeek × numberOfResources × duration (weeks)</code></li>
+      <li><strong>Subtotal</strong> = Labor Cost + Overhead + Materials + Equipment + Travel + Subcontractors + Permits</li>
+      <li><strong>Contingency</strong> = Contingency % × Subtotal</li>
+      <li><strong>Total before GST</strong> = Subtotal + Contingency</li>
+      <li><strong>GST</strong> = GST % × Total before GST</li>
+      <li><strong>Final Total Cost (with GST)</strong> = Total before GST + GST</li>
+    </ol>
+    <p><em>Note:</em> The <code>resourceCostPerWeek</code> and <code>overhead</code> values vary depending on project type.</p>
+  </div>
+
+  <script>
+    const form = document.getElementById('estimateForm');
+    const resultDiv = document.getElementById('result');
+
+    // Setup charts
+    const lineCtx = document.getElementById('lineChart').getContext('2d');
+    const barCtx = document.getElementById('barChart').getContext('2d');
+    const pieCtx = document.getElementById('pieChart').getContext('2d');
+    const radarCtx = document.getElementById('radarChart').getContext('2d');
+
+    const lineChart = new Chart(lineCtx, {
+      type: 'line',
+      data: { labels: [], datasets: [{ label: 'Total Cost Over Time', data: [], borderColor: '#36A2EB', fill: false, tension: 0.2 }] },
+      options: { responsive: true, scales: { y: { beginAtZero: true, title: { display: true, text: 'Cost ($)' } }, x: { title: { display: true, text: 'Week' } } } }
+    });
+
+    const barChart = new Chart(barCtx, {
+      type: 'bar',
+      data: { labels: [], datasets: [{ label: 'Weekly Total Cost', data: [], backgroundColor: '#E67E22' }] },
+      options: { responsive: true, scales: { y: { beginAtZero: true, title: { display: true, text: 'Cost ($)' } }, x: { title: { display: true, text: 'Week' } } } }
+    });
+
+    const pieChart = new Chart(pieCtx, {
+      type: 'pie',
+      data: { labels: [], datasets: [{ label: 'Cost Breakdown (Last Week)', data: [], backgroundColor: ['#3498DB', '#2ECC71', '#E74C3C', '#9B59B6', '#F1C40F', '#34495E', '#1ABC9C', '#D35400', '#7F8C8D'] }] },
+      options: { responsive: true }
+    });
+
+    const radarChart = new Chart(radarCtx, {
+      type: 'radar',
+      data: { labels: ['Labor', 'Overhead', 'Materials', 'Equipment', 'Travel', 'Subcontractors', 'Permits'], datasets: [{ label: 'Cost Categories', data: [], backgroundColor: 'rgba(52, 152, 219, 0.2)', borderColor: '#3498DB', pointBackgroundColor: '#2980b9' }] },
+      options: { responsive: true, scales: { r: { beginAtZero: true } } }
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const type = document.getElementById('projectType').value;
+      const duration = parseInt(document.getElementById('duration').value);
+      const resources = parseInt(document.getElementById('resources').value);
+      const materials = parseFloat(document.getElementById('materials').value) || 0;
+      const equipment = parseFloat(document.getElementById('equipment').value) || 0;
+      const travel = parseFloat(document.getElementById('travel').value) || 0;
+      const subcontractors = parseFloat(document.getElementById('subcontractors').value) || 0;
+      const permits = parseFloat(document.getElementById('permits').value) || 0;
+      const contingencyPercent = parseFloat(document.getElementById('contingencyPercent').value) || 0;
+      const gstPercent = parseFloat(document.getElementById('gstPercent').value) || 18;
+
+      const costFactors = {
+        construction: { resourceCost: 500, overhead: 10000 },
+        software: { resourceCost: 800, overhead: 5000 },
+        marketing: { resourceCost: 600, overhead: 3000 }
+      };
+
+      if (!costFactors[type]) {
+        resultDiv.textContent = 'Please select a valid project type.';
+        return;
+      }
+
+      const { resourceCost, overhead } = costFactors[type];
+
+      // Labor cost total
+      const laborCost = resourceCost * resources * duration;
+
+      // Subtotal total
+      const subtotal = laborCost + overhead + materials + equipment + travel + subcontractors + permits;
+
+      // Contingency
+      const contingency = (contingencyPercent / 100) * subtotal;
+
+      // Total before GST
+      const totalBeforeGST = subtotal + contingency;
+
+      // GST amount
+      const gstAmount = (gstPercent / 100) * totalBeforeGST;
+
+      // Final total cost
+      const totalCost = totalBeforeGST + gstAmount;
+
+      const formatCurrency = num => '$' + num.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+      resultDiv.innerHTML = `
+        <h2>Estimated Total Cost: <span>${formatCurrency(totalCost)}</span></h2>
+        <p><strong>Breakdown:</strong></p>
+        <ul>
+          <li>Labor Cost (${resources} × ${duration} weeks × ${formatCurrency(resourceCost)}): ${formatCurrency(laborCost)}</li>
+          <li>Overhead: ${formatCurrency(overhead)}</li>
+          <li>Materials & Supplies: ${formatCurrency(materials)}</li>
+          <li>Equipment & Tools: ${formatCurrency(equipment)}</li>
+          <li>Travel & Transportation: ${formatCurrency(travel)}</li>
+          <li>Subcontractors & Consultants: ${formatCurrency(subcontractors)}</li>
+          <li>Permits & Legal Fees: ${formatCurrency(permits)}</li>
+          <li>Contingency (${contingencyPercent}%): ${formatCurrency(contingency)}</li>
+          <li>GST (${gstPercent}%): ${formatCurrency(gstAmount)}</li>
+        </ul>
+        <p><em>This is a rough estimate and should be refined with project-specific data.</em></p>
+      `;
+
+      // Generate data for charts - weekly cumulative total
+      const weeklyLaborCost = resourceCost * resources;
+      const labels = [];
+      const weeklyTotals = [];
+
+      for (let week = 1; week <= duration; week++) {
+        labels.push(`Week ${week}`);
+
+        const cumLabor = weeklyLaborCost * week;
+        const cumSubtotal = cumLabor + overhead + materials + equipment + travel + subcontractors + permits;
+        const cumContingency = (contingencyPercent / 100) * cumSubtotal;
+        const cumTotalBeforeGST = cumSubtotal + cumContingency;
+        const cumGST = (gstPercent / 100) * cumTotalBeforeGST;
+        const cumFinal = cumTotalBeforeGST + cumGST;
+
+        weeklyTotals.push(+cumFinal.toFixed(2));
+      }
+
+      // Update Line Chart
+      lineChart.data.labels = labels;
+      lineChart.data.datasets[0].data = weeklyTotals;
+      lineChart.update();
+
+      // Update Bar Chart
+      barChart.data.labels = labels;
+      barChart.data.datasets[0].data = weeklyTotals;
+      barChart.update();
+
+      // Pie chart breakdown for last week (including contingency & GST)
+      const lastWeekLabor = weeklyLaborCost * duration;
+      const lastWeekSubtotal = lastWeekLabor + overhead + materials + equipment + travel + subcontractors + permits;
+      const lastWeekContingency = (contingencyPercent / 100) * lastWeekSubtotal;
+      const lastWeekBeforeGST = lastWeekSubtotal + lastWeekContingency;
+      const lastWeekGST = (gstPercent / 100) * lastWeekBeforeGST;
+
+      const pieLabels = ['Labor', 'Overhead', 'Materials', 'Equipment', 'Travel', 'Subcontractors', 'Permits', 'Contingency', 'GST'];
+      const pieData = [
+        lastWeekLabor, overhead, materials, equipment,
+        travel, subcontractors, permits,
+        lastWeekContingency, lastWeekGST
+      ];
+
+      pieChart.data.labels = pieLabels;
+      pieChart.data.datasets[0].data = pieData;
+      pieChart.update();
+
+      // Radar chart categories (without contingency and GST)
+      radarChart.data.datasets[0].data = [
+        lastWeekLabor, overhead, materials, equipment, travel, subcontractors, permits
+      ];
+      radarChart.update();
+    });
+  </script>
+
+</body>
+</html>
