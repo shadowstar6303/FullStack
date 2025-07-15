@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Cost Estimator</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f6fa;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+      background: #2980b9;
+      color: white;
+    }
+
+    .main {
+      display: flex;
+      padding: 20px;
+      gap: 30px;
+      max-width: 1400px;
+      margin: auto;
+    }
+
+    form {
+      flex: 1;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #3498db;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1c5980;
+    }
+
+    .secondary-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .secondary-buttons button {
+      flex: 1;
+      background-color: #95a5a6;
+    }
+
+    .secondary-buttons button:hover {
+      background-color: #7f8c8d;
+    }
+
+    .right {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    #result {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .downloads {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .downloads button {
+      flex: 1;
+      background-color: #2ecc71;
+    }
+
+    .downloads button:last-child {
+      background-color: #e67e22;
+    }
+
+    @media (max-width: 900px) {
+      .main {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Project Cost Estimator</h1>
+
+<div class="main">
+  <!-- Left Form -->
+  <form id="estimateForm">
+    <label for="projectTitle">Project Title</label>
+    <input type="text" id="projectTitle" placeholder="My Awesome Project" />
+
+    <label for="projectType">Project Type</label>
+    <select id="projectType" required>
+      <option value="" disabled selected>Select Type</option>
+      <option value="construction">Construction</option>
+      <option value="software">Software Development</option>
+      <option value="marketing">Marketing</option>
+    </select>
+
+    <label for="duration">Duration (weeks)</label>
+    <input type="number" id="duration" min="1" required />
+
+    <label for="resources">Resources</label>
+    <input type="number" id="resources" min="1" required />
+
+    <label for="materials">Materials ($)</label>
+    <input type="number" id="materials" min="0" value="0" />
+
+    <label for="equipment">Equipment ($)</label>
+    <input type="number" id="equipment" min="0" value="0" />
+
+    <label for="travel">Travel ($)</label>
+    <input type="number" id="travel" min="0" value="0" />
+
+    <label for="subcontractors">Subcontractors ($)</label>
+    <input type="number" id="subcontractors" min="0" value="0" />
+
+    <label for="permits">Permits ($)</label>
+    <input type="number" id="permits" min="0" value="0" />
+
+    <label for="contingencyPercent">Contingency %</label>
+    <input type="number" id="contingencyPercent" min="0" value="10" />
+
+    <label for="gstPercent">GST %</label>
+    <input type="number" id="gstPercent" min="0" value="18" />
+
+    <button type="submit">Estimate Cost</button>
+
+    <div class="secondary-buttons">
+      <button type="button" id="sampleBtn">Sample Data</button>
+      <button type="button" id="resetBtn">Reset</button>
+    </div>
+  </form>
+
+  <!-- Right Result + Downloads -->
+  <div class="right">
+    <div id="result"></div>
+    <div class="downloads">
+      <button id="downloadCSVBtn">Download CSV</button>
+      <button id="downloadPDFBtn">Download PDF</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('estimateForm');
+  const resultDiv = document.getElementById('result');
+
+  // Load history from localStorage or start empty
+  let history = JSON.parse(localStorage.getItem('estimateHistory') || '[]');
+
+  // Function to render all history in the resultDiv
+  function renderHistory() {
+    if(history.length === 0){
+      resultDiv.innerHTML = '<p>No estimates yet.</p>';
+      return;
+    }
+
+    const format = n => '$' + n.toLocaleString(undefined, { minimumFractionDigits: 2 });
+
+    resultDiv.innerHTML = history.map((data, i) => `
+      <div style="border-bottom:1px solid #ddd; margin-bottom: 10px; padding-bottom: 10px;">
+        <h3>${i + 1}. ${data.title}</h3>
+        <p><strong>Total Cost:</strong> ${format(data.total)}</p>
+        <ul>
+          <li>Labor: ${format(data.labor)}</li>
+          <li>Overhead: ${format(data.overhead)}</li>
+          <li>Materials: ${format(data.materials)}</li>
+          <li>Equipment: ${format(data.equipment)}</li>
+          <li>Travel: ${format(data.travel)}</li>
+          <li>Subcontractors: ${format(data.subcontractors)}</li>
+          <li>Permits: ${format(data.permits)}</li>
+          <li>Contingency (${data.contingencyPercent}%): ${format(data.contingency)}</li>
+          <li>GST (${data.gstPercent}%): ${format(data.gst)}</li>
+        </ul>
+      </div>
+    `).join('');
+  }
+
+  // Initial render on page load
+  renderHistory();
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const title = document.getElementById('projectTitle').value.trim() || "Untitled Project";
+    const type = document.getElementById('projectType').value;
+    const duration = parseInt(document.getElementById('duration').value);
+    const resources = parseInt(document.getElementById('resources').value);
+    const materials = parseFloat(document.getElementById('materials').value) || 0;
+    const equipment = parseFloat(document.getElementById('equipment').value) || 0;
+    const travel = parseFloat(document.getElementById('travel').value) || 0;
+    const subcontractors = parseFloat(document.getElementById('subcontractors').value) || 0;
+    const permits = parseFloat(document.getElementById('permits').value) || 0;
+    const contingencyPercent = parseFloat(document.getElementById('contingencyPercent').value) || 0;
+    const gstPercent = parseFloat(document.getElementById('gstPercent').value) || 0;
+
+    const costMap = {
+      construction: { resourceCost: 500, overhead: 10000 },
+      software: { resourceCost: 800, overhead: 5000 },
+      marketing: { resourceCost: 600, overhead: 3000 }
+    };
+
+    const { resourceCost, overhead } = costMap[type];
+
+    const labor = resourceCost * resources * duration;
+    const subtotal = labor + overhead + materials + equipment + travel + subcontractors + permits;
+    const contingency = (contingencyPercent / 100) * subtotal;
+    const beforeGST = subtotal + contingency;
+    const gst = (gstPercent / 100) * beforeGST;
+    const total = beforeGST + gst;
+
+    const estimate = {
+      title, labor, overhead, materials, equipment, travel, subcontractors, permits,
+      contingency, gst, total,
+      contingencyPercent, gstPercent
+    };
+
+    // Add new estimate to history and save
+    history.push(estimate);
+    localStorage.setItem('estimateHistory', JSON.stringify(history));
+
+    // Re-render all history
+    renderHistory();
+
+    // Reset form after submission (optional)
+    // form.reset();
+  });
+
+  // Sample Data Button
+  document.getElementById('sampleBtn').addEventListener('click', () => {
+    document.getElementById('projectTitle').value = "Sample Project";
+    document.getElementById('projectType').value = "software";
+    document.getElementById('duration').value = 12;
+    document.getElementById('resources').value = 5;
+    document.getElementById('materials').value = 2000;
+    document.getElementById('equipment').value = 1500;
+    document.getElementById('travel').value = 500;
+    document.getElementById('subcontractors').value = 3000;
+    document.getElementById('permits').value = 400;
+    document.getElementById('contingencyPercent').value = 12;
+    document.getElementById('gstPercent').value = 18;
+
+    resultDiv.innerHTML = '<p>Sample data loaded. Click "Estimate Cost" to calculate.</p>';
+  });
+
+  // Reset Button
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    form.reset();
+    history = [];
+    localStorage.removeItem('estimateHistory');
+    resultDiv.innerHTML = '<p>No estimates yet.</p>';
+  });
+
+  // Download full history CSV
+  document.getElementById('downloadCSVBtn').addEventListener('click', () => {
+    if(history.length === 0){
+      alert('No estimate history to export.');
+      return;
+    }
+    const headers = ['Project Title', 'Labor', 'Overhead', 'Materials', 'Equipment', 'Travel', 'Subcontractors', 'Permits', 'Contingency', 'GST', 'Total', 'Contingency %', 'GST %'];
+    const rows = history.map(data => [
+      `"${data.title}"`,
+      data.labor.toFixed(2),
+      data.overhead.toFixed(2),
+      data.materials.toFixed(2),
+      data.equipment.toFixed(2),
+      data.travel.toFixed(2),
+      data.subcontractors.toFixed(2),
+      data.permits.toFixed(2),
+      data.contingency.toFixed(2),
+      data.gst.toFixed(2),
+      data.total.toFixed(2),
+      data.contingencyPercent,
+      data.gstPercent
+    ]);
+
+    const csvContent = [
+      headers.join(','),
+      ...rows.map(r => r.join(','))
+    ].join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `Project_Estimates_History.csv`;
+    link.click();
+  });
+
+  // Download PDF of last estimate only (for simplicity)
+  document.getElementById('downloadPDFBtn').addEventListener('click', () => {
+    if(history.length === 0){
+      alert('No estimate to export.');
+      return;
+    }
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const data = history[history.length -1]; // Last estimate
+
+    doc.setFontSize(16);
+    doc.text(data.title, 10, 15);
+    doc.setFontSize(12);
+    doc.text(`Total Estimate: $${data.total.toFixed(2)}`, 10, 25);
+
+    const lines = [
+      `Labor: $${data.labor.toFixed(2)}`,
+      `Overhead: $${data.overhead.toFixed(2)}`,
+      `Materials: $${data.materials.toFixed(2)}`,
+      `Equipment: $${data.equipment.toFixed(2)}`,
+      `Travel: $${data.travel.toFixed(2)}`,
+      `Subcontractors: $${data.subcontractors.toFixed(2)}`,
+      `Permits: $${data.permits.toFixed(2)}`,
+      `Contingency (${data.contingencyPercent}%): $${data.contingency.toFixed(2)}`,
+      `GST (${data.gstPercent}%): $${data.gst.toFixed(2)}`
+    ];
+
+    lines.forEach((line, i) => doc.text(line, 10, 35 + i * 8));
+
+    doc.save(`${data.title.replace(/\s+/g, '_')}_Estimate.pdf`);
+  });
+
+</script>
+
+</body>
+</html>
